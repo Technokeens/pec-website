@@ -1,0 +1,30 @@
+/*@font-face {
+  font-family: 'McLaren';
+  src : url('../font/McLaren.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bowlby One SC', cursive;
+  src : url('../font/BowlbyOneSC.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bellada', cursive;
+  src : url('../font/bellada.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+*/
+/*@font-face {
+  font-family: 'Satisfy';
+  src : local("Satisfy") url('https://fonts.googleapis.com/css?family=Satisfy&display=swap') format('truetype');
+}*/
+
+@font-face {
+  font-family: 'Satisfy';
+  src : local("Satisfy") url('../font/Satisfy.ttf') format('truetype');
+}
