@@ -13,7 +13,6 @@ pass: pec_website@123
 -------------------------------------------------
 
 SQL QUERIES:
-
 <!-- $this->db->join('shop_categories_translations', 'find_in_set(shop_categories_translations.for_id,at_products.shop_categorie)<> 0', 'inner'); -->
 
 <!-- ALTER TABLE `tbl_contact_us` CHANGE `latitude` `telephone` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
@@ -32,11 +31,5 @@ ALTER TABLE `tbl_product` CHANGE `related_product` `related_series` TEXT CHARACT
 ALTER TABLE `tbl_product_series` ADD `show_as_featured` VARCHAR(255) NOT NULL AFTER `series_image`;
 ALTER TABLE `tbl_application` ADD `show_as_home` VARCHAR(255) NOT NULL AFTER `position`; -->
 <!-- ALTER TABLE `tbl_application` ADD `application_icon_white` VARCHAR(255) NOT NULL AFTER `application_image`; -->
+<!-- ALTER TABLE `tbl_product_series` CHANGE `construction_id` `construction_id` VARCHAR(255) NOT NULL; -->
 
-ALTER TABLE `tbl_product_series` CHANGE `construction_id` `construction_id` VARCHAR(255) NOT NULL;
-
-add series
-edit series
-manage series
-ManageProductSeries controller 
-query update in database - tbl_product_series table.
