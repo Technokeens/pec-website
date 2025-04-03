@@ -64,6 +64,7 @@ class ManageLead extends CI_Controller
             {  
                 $sr_no              = $j;
                 $lead_name          = (!empty($val['lead_name'])) ? ucfirst($val['lead_name']) : ''; 
+                $lead_phone          = (!empty($val['lead_phone'])) ? ucfirst($val['lead_phone']) : '-'; 
                 $lead_subject       = (!empty($val['lead_subject'])) ? $val['lead_subject'] : ''; 
                 $lead_email       = (!empty($val['lead_email'])) ? $val['lead_email'] : ''; 
                 $created_on         = (!empty($val['created_on'])) ? date('Y-m-d',strtotime($val['created_on'])) : '';
@@ -80,6 +81,7 @@ class ManageLead extends CI_Controller
                 $data[] = array(
                     'sr_no'                 => $sr_no,
                     'lead_name'             => $lead_name,
+                    'lead_phone'             => $lead_phone,
                     'lead_email'            => $lead_email,
                     'lead_subject'          => $lead_subject, 
                     'created_on'            => $created_on,

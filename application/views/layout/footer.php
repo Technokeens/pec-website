@@ -16,7 +16,7 @@
                <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
                   <div class="logo mb-md-4">
                      <a href="<?=base_url();?>">
-                     <img src="<?=base_url();?>assets/images/peclogo_white.png" alt="Uomo" class="logo__image footer_logo d-block">
+                     <img src="<?=base_url();?>assets/images/peclogo_white.png" alt="PEC Logo White" class="logo__image footer_logo d-block">
                      </a>
                   </div>
                   <!-- /.logo -->
@@ -58,15 +58,15 @@
                   <ul class="sub-menu__list list-unstyled">
                      <li class="sub-menu__item"><a href="<?=base_url();?>" class="menu-link menu-link_us-s">Home</a></li>
                      <li class="sub-menu__item"><a href="<?=base_url();?>product" class="menu-link menu-link_us-s">Products</a></li>
-                     <li class="sub-menu__item"><a href="<?=base_url();?>application-list" class="menu-link menu-link_us-s">Applications</a></li>
-                     <li class="sub-menu__item"><a href="<?=base_url();?>about" class="menu-link menu-link_us-s">About Us</a></li>
+                     <li class="sub-menu__item"><a href="<?=base_url();?>applications" class="menu-link menu-link_us-s">Applications</a></li>
+                     <li class="sub-menu__item"><a href="<?=base_url();?>about-us" class="menu-link menu-link_us-s">About Us</a></li>
                   </ul>
                </div>
                <!-- /.footer-column -->
                <div class="footer-column footer-menu mb-4 mb-lg-0">
                   <h4 class="sub-menu__title text-capitalize fw-bold">Support</h4>
                   <ul class="sub-menu__list list-unstyled">
-                     <li class="sub-menu__item"><a href="<?=base_url();?>contact" class="menu-link menu-link_us-s">Contact Us</a></li>
+                     <li class="sub-menu__item"><a href="<?=base_url();?>contact-us" class="menu-link menu-link_us-s">Contact Us</a></li>
                      <li class="sub-menu__item"><a href="<?=base_url();?>request-quote" class="menu-link menu-link_us-s">Request a Quote</a></li>
                      <li class="sub-menu__item"><a href="<?=base_url();?>terms" class="menu-link menu-link_us-s">Terms of service</a></li>
                      <li class="sub-menu__item"><a href="<?=base_url();?>privacy-policy" class="menu-link menu-link_us-s">Privacy Policy</a></li>

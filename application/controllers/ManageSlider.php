@@ -36,6 +36,7 @@ class ManageSlider extends CI_Controller
                 $slider_content = $this->input->post("slider_content");
                 $description    = $this->input->post("description");
                 $url            = $this->input->post("url");
+                $url_button_label = (!empty($this->input->post("url_button_label"))) ? $this->input->post("url_button_label") : 'Explore Products';
                 
                 $output_dir = "uploads/slider/";
                 $output_dir_thumb = "uploads/slider/thumb/";
@@ -69,7 +70,7 @@ class ManageSlider extends CI_Controller
                         $this->session->set_flashdata('error',$errors);
                         redirect(base_url().'admin/manage-slider');
                     }
-                    $insert_array=array('title'=>$slider_content,'description'=>$description,'image'=>$slider,'url'=>$url);
+                    $insert_array=array('title'=>$slider_content,'description'=>$description,'image'=>$slider,'url'=>$url,'url_button_label'=>$url_button_label,'slider_image_alt' => (!empty($_POST['slider_image_alt'])) ? $_POST['slider_image_alt'] : '', );
                 }
                     
                     
@@ -200,6 +201,7 @@ class ManageSlider extends CI_Controller
                     $description    = $this->input->post("description");
                     $url            = $this->input->post("url");
                     $hidden_slider  = $this->input->post("hidden_slider");
+                    $url_button_label = (!empty($this->input->post("url_button_label"))) ? $this->input->post("url_button_label") : 'Explore Products';
                    
                     $output_dir = "uploads/slider/";
                     $output_dir_thumb = "uploads/slider/thumb/";
@@ -231,7 +233,9 @@ class ManageSlider extends CI_Controller
                                 'title'       => $slider_content,
                                 'description' => $description,
                                 'image'       => $slider,
-                                'url'         => $url
+                                'url'         => $url,
+                                'url_button_label' => $url_button_label,
+                                'slider_image_alt' => (!empty($_POST['slider_image_alt'])) ? $_POST['slider_image_alt'] : '',
                             );
 
                         @unlink($output_dir.$hidden_slider);
@@ -251,7 +255,9 @@ class ManageSlider extends CI_Controller
                                 'title'=>$slider_content,
                                 'description'=>$description,
                                 'image'=>$hidden_slider,
-                                'url'         => $url
+                                'url'         => $url,
+                                'url_button_label' => $url_button_label,
+                                'slider_image_alt' => (!empty($_POST['slider_image_alt'])) ? $_POST['slider_image_alt'] : '',
                             );
 
                         if($this->common->db_update('tbl_slider',$insert_array,'id',$id))

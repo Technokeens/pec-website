@@ -103,12 +103,12 @@ $route['admin/edit-client/(.+)'] 				= 'manageClient/edit_client/$1';
 
 //FRONT END
 
-$route['about'] 								= 'home/about';
-$route['contact'] 								= 'home/contact';
+$route['about-us'] 								= 'home/about';
+$route['contact-us'] 							= 'home/contact';
 $route['request-quote'] 						= 'quote/index';
 $route['terms'] 								= 'home/terms';
 $route['privacy-policy'] 						= 'home/privacy_policy';
-$route['application-list'] 						= 'home/application_list';
+$route['applications'] 						= 'home/application_list';
 $route['view-application/(:any)'] 				= 'home/view_application/$1';
 $route['product'] 								= 'home/series';
 $route['product/(:any)'] 						= 'home/product/$1';

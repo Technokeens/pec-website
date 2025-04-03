@@ -78,15 +78,30 @@
                         <div id="slidererr"></div>
                      </div>
                   </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Alternative Text</label>
+                     <div class="col-sm-10">
+                        <input name="slider_image_alt" id="slider_image_alt" type="text" style="margin:0 0 0 0px;" class="meta_keyword form-control" value="<?=(!empty($detail['slider_image_alt'])) ? $detail['slider_image_alt'] : ''; ?>">
+                        <p style="color: green;">Note :  Add Alternative Text for Image. </p>
+                     </div>
+                  </div>
+
                   <div class="hr-line-dashed"></div>
                   <div class="form-group">
-                     <label class="col-sm-2 control-label">Url</label>
+                     <label class="col-sm-2 control-label">URL Button Label</label>
+                     <div class="col-sm-3">
+                        <input type="text" id="url_button_label" name="url_button_label" class="form-control" value="<?php echo $detail['url_button_label'];?>">
+                        <?php echo form_error('url_button_label', '<div class="error">', '</div>'); ?>
+                     </div>
+
+                     <label class="col-sm-1 control-label">Url</label>
                      <div class="col-sm-6">
                         <input type="text" id="url" name="url" class="form-control" value="<?php echo $detail['url'];?>">
                         <?php echo form_error('url', '<div class="error">', '</div>'); ?>
                         <div id="url_err"></div>
                      </div>
                   </div>
+                  
                   <div class="form-group">
                      <div class="col-sm-4 col-sm-offset-2">
                         <button class="btn btn-w-m btn-primary" id="edit_slider" name="edit_slider" type="submit" value="submit"><i class="icon-ok"></i> Save</button>

@@ -88,6 +88,13 @@
                      </div>
                   </div>
                   <div class="form-group">
+                     <label class="col-sm-2 control-label">Alternative Text</label>
+                     <div class="col-sm-10">
+                        <input name="event_image_alt" id="event_image_alt" type="text" style="margin:0 0 0 0px;" class="meta_keyword form-control" value="<?=(!empty($detail['event_image_alt'])) ? $detail['event_image_alt'] : ''; ?>">
+                        <p style="color: green;">Note :  Add Alternative Text for Image. </p>
+                     </div>
+                  </div>
+                  <div class="form-group">
                      <?php 
                         if(!empty($detail['event_image'])){
                       ?>
@@ -104,7 +111,7 @@
                   <div class="form-group">
                      <div class="col-sm-4 col-sm-offset-2">
                         <button class="btn btn-w-m btn-primary" id="btn_edit_news" name="btn_edit_news" type="submit" value="submit"><i class="icon-ok"></i> Save</button>
-                        <a href="<?php echo base_url().'admin/manage-event';?>"><button style="color: #676a6c;" class="btn btn-white" type="button">Cancel</button></a>    
+                        <a href="<?php echo base_url().'admin/manage-event';?>"><button style="color: #676a6c;" class="btn btn-white" type="button">Cancel</button></a>
                      </div>
                   </div>
                </form>

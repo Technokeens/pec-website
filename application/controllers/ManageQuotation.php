@@ -38,6 +38,7 @@ class ManageQuotation extends CI_Controller
         $name          = "";
         $message       = "";
         $email       = "";
+        $phone       = "";
         $created_on         = "";
         $status             = "";
         $action             = "";
@@ -66,6 +67,7 @@ class ManageQuotation extends CI_Controller
                 $name               = (!empty($val['name'])) ? ucfirst($val['name']) : ''; 
                 $message  = (!empty($val['message'])) ? $val['message'] : ''; 
                 $email       = (!empty($val['email'])) ? $val['email'] : ''; 
+                $phone       = (!empty($val['phone'])) ? $val['phone'] : ''; 
                 $created_on         = (!empty($val['created_on'])) ? date('Y-m-d',strtotime($val['created_on'])) : '';
 
                 $view = '<a class="btn btn-sm btn-info show-tooltip" href="'.base_url().'admin/view-quotation/'.base64_encode($val['id']).'" title="View"> View</a>';
@@ -79,6 +81,7 @@ class ManageQuotation extends CI_Controller
                     'sr_no'                 => $sr_no,
                     'name'             => $name,
                     'email'            => $email,
+                    'phone'            => $phone,
                     'message'          => $message, 
                     'created_on'            => $created_on,
                     'action'                => $action

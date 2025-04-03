@@ -10,6 +10,27 @@ pec_website-353034396275
 username: pec_website
 pass: pec_website@123
 
+-----------------------------------------------------
+
+LIVE SMTP TO INTEGRATE
+
+SMTP Host - smtp-mail.outlook.com
+SMTP Port - 587
+SMTP User - pecwebenquiry@outlook.com
+SMTP Password - PecFeedback2024$
+
+
+In Office 365, navigate to Security > Additional Security Options.
+Enable access for less secure apps or adjust the settings to allow SMTP with basic authentication.
+
+admin@demo.com
+New Password for Backend: PecDwp24#
+
+---------------------------------------
+
+Gmail:
+peccomponents@gmail.com
+Feedback@2024
 -------------------------------------------------
 
 SQL QUERIES:

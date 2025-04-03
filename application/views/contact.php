@@ -1,3 +1,29 @@
+<style>
+  .slideshow-bg {
+    position: relative;
+  }
+
+.slideshow-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:  rgb(0 0 0 / 10%); /* Adjust the color and opacity as needed */
+  z-index: 1;
+}
+
+.slideshow-bg__img {
+  position: relative;
+  z-index: 0;
+}
+
+.slideshow-text {
+  z-index: 2; /* Ensures text is above the overlay */
+}
+
+</style>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <main>
    <section class="swiper-container js-swiper-slider slideshow type2 full-width"
@@ -23,8 +49,8 @@
             <div class="slideshow-text container position-absolute start-50 top-60 translate-middle">
               <div class="row">
                 <div class="col-lg-5">
-                  <h2 class="text-capitalize text-white fw-bold mb-0 animate animate_fade animate_btt animate_delay-4 fs-38 mbfonth">Contact Us</h2>
-                  <p class="fs-6 mb-4 pb-2 text-white animate animate_fade animate_btt animate_delay-5 mbfontp">Got a project in mind? We're all ears! Fill out the form and tell us all about your project.</p>
+                  <h1 class="text-capitalize text-white fw-bold mb-0 animate animate_fade animate_btt animate_delay-4 fs-38 mbfonth">Contact Us</h1>
+                  <p class="mb-4 pb-2 text-white animate animate_fade animate_btt animate_delay-5 mbfontp contfs-16">Discover how Precision Electronics Components Manufacturing Co. can meet your specific needs with precision and reliability. Contact us today to learn more about our products and services.</p>
                   <a href="mailto:<?=(!empty($mainaddress['email'])) ? $mainaddress['email'] : ''; ?>"><p class="text-white mbfontp"><img src="<?=base_url()?>assets/images/email.png" class="contact_banner_icon"> <?=(!empty($mainaddress['email'])) ? 'Send Email' : ''; ?></p></a>
                   <a href="tel:<?=(!empty($mainaddress['phone'])) ? $mainaddress['phone'] : ''; ?>"><p class="text-white mbfontp"><img src="<?=base_url()?>assets/images/phone.png" class="contact_banner_icon"> <?=(!empty($mainaddress['phone'])) ? $mainaddress['phone'] : ''; ?></p></a>
                 </div>
@@ -70,6 +96,10 @@
             <div class="form-floating my-2">
               <label for="contact_us_name">Email *</label>
               <input type="email" class="form-control" name="lead_email" id="lead_email" placeholder="Email@example.com" required>
+            </div>
+            <div class="form-floating my-4">
+              <label for="lead_phone">Mobile Number *</label>
+              <input type="number" class="form-control" name="lead_phone" id="lead_phone" placeholder="98********" required>
             </div>
             <div class="form-floating my-2">
               <label for="contact_us_name">Subject*</label>
@@ -293,6 +323,7 @@
     $(document).on('click','#save',function(){
         var lead_name      = $('#lead_name').val();
         var lead_email     = $('#lead_email').val();
+        var lead_phone     = $('#lead_phone').val();
         var lead_message   = $('#lead_message').val();
         var name_regex = /^[a-zA-Z ]+$/;
         var flag    = 0;
@@ -330,6 +361,21 @@
               remove_error('lead_email');
             }
         }
+
+        if (lead_phone == "" || !lead_phone.trim())
+        {
+            show_error("lead_phone","Please enter mobile number.");
+            flag = 1;
+        } 
+        else if(!/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(lead_phone))
+        {
+            show_error("lead_phone","Please enter correct mobile number.");
+            flag = 1;
+        } 
+        else
+        {     
+            remove_error("lead_phone");
+        } 
 
         if(lead_message=="")
         {

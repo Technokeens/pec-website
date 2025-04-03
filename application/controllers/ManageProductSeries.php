@@ -61,6 +61,9 @@ class ManageProductSeries extends CI_Controller
                     {
                         $show_as_featured="off";
                     } 
+
+                    $series_image_alt = (!empty($_POST['series_image_alt'])) ? $_POST['series_image_alt'] : '';
+
                     $add_data=array(
                                     'title'                 => $title,
                                     'construction_id'       => $construction_id,
@@ -68,6 +71,7 @@ class ManageProductSeries extends CI_Controller
                                     'position'              => $position,
                                     'short_description'     => $short_description,
                                     'show_as_featured'      => $show_as_featured,
+                                    'series_image_alt'      => $series_image_alt,
                                     'seo_keywords'          => $meta_keyword,
                                     'seo_description'       => $meta_description,
                                     'seo_title'             => $meta_title,
@@ -369,6 +373,8 @@ class ManageProductSeries extends CI_Controller
                     {
                         $show_as_featured="off";
                     }
+
+                    $series_image_alt = (!empty($_POST['series_image_alt'])) ? $_POST['series_image_alt'] : '';
                   
                     $add_data=array(
                                     'title'                 => $title,
@@ -377,6 +383,7 @@ class ManageProductSeries extends CI_Controller
                                     'position'              => $position,
                                     'short_description'     => $short_description,
                                     'show_as_featured'      => $show_as_featured,
+                                    'series_image_alt'      => $series_image_alt,
                                     'seo_keywords'          => $meta_keyword,
                                     'seo_description'       => $meta_description,
                                     'seo_title'             => $meta_title,

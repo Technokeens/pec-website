@@ -64,6 +64,13 @@
                      </div>
                   </div>
                   <div class="form-group">
+                     <label class="col-sm-2 control-label">Alternative Text</label>
+                     <div class="col-sm-10">
+                        <input name="image_alt" id="image_alt" type="text" style="margin:0 0 0 0px;" class="meta_keyword form-control" value="<?=(!empty($detail['image_alt'])) ? $detail['image_alt'] : ''; ?>">
+                        <p style="color: green;">Note :  Add Alternative Text for Image. </p>
+                     </div>
+                  </div>
+                  <div class="form-group">
                      <?php 
                         if(!empty($detail['image'])){
                       ?>

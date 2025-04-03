@@ -21,6 +21,7 @@
     width: 70.25rem;
     max-width: calc(100% - 1rem);
   }
+
 </style>
 <div class="mb-5 pb-xl-5"></div>
   <main style="padding-top: 10%;">
@@ -43,62 +44,74 @@
             <a href="#" class="menu-link menu-link_us-s text-capitalize fw-medium primaryblue" ><b><?=(!empty($product_data['product_name'])) ? ucfirst($product_data['product_name']) : ''; ?></b></a>
           </div><!-- /.breadcrumb -->
         </div>
-
-        <!-- <div class="row mb-4"> -->
-          <!-- <div class="col-lg-12"> -->
-            <div class="brands-carousel container mb-3">
-              <div class="position-relative">
-                <!-- "autoplay": {
-                      "delay": 10000
-                    }, -->
-                <div class="swiper-container js-swiper-slider"
-                  data-settings='{
-                    "slidesPerView": 7,
-                    "slidesPerGroup": 7,
-                    "effect": "none",
-                    "loop": false,
-                    "breakpoints": {
-                      "320": {
-                        "slidesPerView": 4,
-                        "slidesPerGroup": 2,
-                        "spaceBetween": 14
-                      },
-                      "768": {
-                        "slidesPerView": 3,
-                        "slidesPerGroup": 4,
-                        "spaceBetween": 24
-                      },
-                      "992": {
-                        "slidesPerView": 10,
-                        "slidesPerGroup": 1,
-                        "spaceBetween": 30,
-                        "pagination": false
-                      }
+        
+        <!-- <div class="brands-carousel container mb-3">
+          <div class="position-relative">
+            <div class="swiper-container js-swiper-slider"
+              data-settings='{
+                "slidesPerView": 7,
+                "slidesPerGroup": 7,
+                "effect": "none",
+                "loop": false,
+                "breakpoints": {
+                  "320": {
+                    "slidesPerView": 4,
+                    "slidesPerGroup": 2,
+                    "spaceBetween": 14
+                  },
+                  "768": {
+                    "slidesPerView": 3,
+                    "slidesPerGroup": 4,
+                    "spaceBetween": 24
+                  },
+                  "992": {
+                    "slidesPerView": 10,
+                    "slidesPerGroup": 1,
+                    "spaceBetween": 30,
+                    "pagination": false
+                  }
+                }
+              }'>
+              <div class="swiper-wrapper">
+                <?php
+                if(!empty($getproducts)){
+                  foreach ($getproducts as $prodkey => $prod) { 
+                    $tabactive ='';
+                    if($product_data['slug'] == $prod['slug']){
+                      $tabactive = 'active';
                     }
-                  }'>
-                  <div class="swiper-wrapper">
+                ?>
+                    <div class="swiper-slide prod-slider namewrap">
+                      <a href="<?=base_url();?>product/<?=$product_data['series_slug']?>/<?=$prod['slug']?>"><h6 class="prodslidertab <?=$tabactive;?>"><?=(!empty($prod['product_name'])) ? ucfirst($prod['product_name']) : ''; ?></h6></a>
+                    </div>
                     <?php
-                    if(!empty($getproducts)){
-                      foreach ($getproducts as $prodkey => $prod) { 
-                        $tabactive ='';
-                        if($product_data['slug'] == $prod['slug']){
-                          $tabactive = 'active';
-                        }
-                    ?>
-                        <div class="swiper-slide prod-slider namewrap">
-                          <a href="<?=base_url();?>product/<?=$product_data['series_slug']?>/<?=$prod['slug']?>"><h6 class="prodslidertab <?=$tabactive;?>"><?=(!empty($prod['product_name'])) ? ucfirst($prod['product_name']) : ''; ?></h6></a>
-                        </div>
-                        <?php
-                      }
-                    }
-                    ?>
-                  </div>
-                </div>
+                  }
+                }
+                ?>
               </div>
-
             </div>
-          <!-- </div> -->
-        <!-- </div> -->
+          </div>
+        </div> -->
+        <div class="row mb-4">
+          <div class="col-lg-12">
+            <?php
+              if(!empty($getproducts)){
+                foreach ($getproducts as $prodkey => $prod) { 
+                  $tabactive ='';
+                  if($product_data['slug'] == $prod['slug']){
+                    $tabactive = 'active';
+                  }
+              ?>
+                  <div class="series_product_divs" style="">
+                    <a href="<?=base_url();?>product/<?=$product_data['series_slug']?>/<?=$prod['slug']?>"><h6 class="prodslidertab <?=$tabactive;?>"><?=(!empty($prod['product_name'])) ? ucfirst($prod['product_name']) : ''; ?></h6></a>
+                  </div>
+                  <?php
+                }
+              }
+            ?>
+          </div>
+        </div>
+
         <?php 
           if(!empty($product_data['series_image']) && file_exists('uploads/series/'.$product_data['series_image']))
           {
@@ -111,6 +124,7 @@
           $power_rating_array = array();
           if(!empty($product_data['power_ids'])){
             $explode = explode(',', $product_data['power_ids']);
+            rsort($explode);
             foreach ($explode as $prkey => $prvalue) {
                 $power = $this->common->fetchsingledata('power_rating', 'tbl_power_rating',' WHERE pr_id="'.$prvalue.'"');
                 $power_rating_array[] = $power['power_rating'];
@@ -120,7 +134,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mbbottom marginmb">
             <div class="d-block prodDetailiimage">
-              <img src="<?=$serieimage;?>" class="mb-4">
+              <img src="<?=$serieimage;?>" class="mb-4" alt="<?=(!empty($product_data['series_image_alt'])) ? $product_data['series_image_alt'] : ''; ?>">
               <h3 class="product-single__name"><?=(!empty($product_data['product_name'])) ? $product_data['product_name'] : ''; ?></h3>
               <h3 class="product-single__name"><?=(!empty($product_data['title'])) ? $product_data['title'] : ''; ?></h3>
             </div>
@@ -208,16 +222,30 @@
                       $implodename = implode(',', $arrnames); ?>
                       <button type="button" class="btn btn-outline-primary border-0 fs-base text-capitalize btn-45 mt-2 mr14 document_model">Download Datasheet</button>
 
+                      <?php }else{ ?>
+                        <a href="<?=base_url();?>contact-us" title="Connect to Sales Team"><button type="button" class="btn btn-outline-primary border-0 fs-base text-capitalize btn-45 mt-4" > Connect to Sales Team </button></a>
                       <?php
                     }
-                  }
-                ?>
+                    }else{ ?>
+                      <a href="<?=base_url();?>contact-us" title="Connect to Sales Team"><button type="button" class="btn btn-outline-primary border-0 fs-base text-capitalize btn-45 mt-4" > Connect to Sales Team </button></a>
+                  <?php } ?>
               </form>
             </div>
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 h-md-100 prod-box">
-              <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Additional Information</h3>
-
+              <h1 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Additional Information</h1>
+              
+              <?php if(!empty($product_data['short_description'])){ ?>
+                <!-- <div class="row">
+                  <div class="col-lg-6 proddetail_left">
+                    <p>Description</p>
+                  </div>
+                  <div class="col-lg-6 proddetail_right">
+                    <p></p>
+                  </div>
+                </div> -->
+              <?php } ?>
+              
               <div class="row">
                 <div class="col-lg-6 proddetail_left">
                   <p>Resistor Construction</p>
@@ -379,7 +407,7 @@
               <br>
               <br>
               <br>
-            <div class="col-lg-12 mt-3" style="display:none;">
+            <div class="col-lg-12 mt-3" style="display:none">
               <div class="accordion" id="construction-filters">
                 <div class="accordion-item mb-2 pb-1">
                   <h5 class="accordion-header filtertab_inactive" id="accordion-heading-1">
@@ -394,7 +422,7 @@
                   </h5>
                   <div id="accordion-filter-2" class="accordion-collapse collapse border-0" aria-labelledby="accordion-heading-1" data-bs-parent="#construction-filters">
                     <div class="multi-select accordion-body px-2 pb-0">
-                      <ul class="d-flex">
+                      <ul class="" style="list-style-type: disclosure-closed;"> <!-- d-flex -->
                         <?php
                           if($product_data['cross_reference']){
                             $cross_reference = explode(',', $product_data['cross_reference']);
@@ -663,8 +691,8 @@
                     ?>
                     <td class="pdcmp remove_cmp_<?=$cmp['product_id']?>">
                        <p class="textgrey">
-                          <!-- <?=(!empty($cmp['power_rating'])) ? $cmp['power_rating'] : ''; ?> -->
-                          <?=(!empty($product_data['product_power_rating'])) ? implode(', ', $power_rating_array) : '0.00W'; ?>
+                          <?=(!empty($cmp['power_rating'])) ? $cmp['power_rating'] : ''; ?>
+                          <!-- <?=(!empty($product_data['product_power_rating'])) ? implode(', ', $power_rating_array) : '0.00W'; ?> -->
                             
                       </p>
                     </td>

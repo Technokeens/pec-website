@@ -5,6 +5,35 @@
 	padding: 10px 20px 10px 20px;
 	font-family: "Poppins", sans-serif;
 }*/
+
+/* Medium desktop view */
+/*@media (max-width: 1200px) {
+    body {
+        font-size: 14px;
+    }
+    .sliderfs {
+        font-size: 20px;
+    }
+}*/
+
+/* Small desktop view */
+/*@media (max-width: 992px) {
+    body {
+        font-size: 16px;
+    }
+    .sliderfs {
+        font-size: 22px;
+    }
+}*/
+
+body {
+    font-size: clamp(14px, 2vw, 12px);
+}
+
+.bgtextslider{
+    background: #3939395c;
+    padding: 10px;
+}
 .mr14{
     margin-right: 14px!important;
 }
@@ -30,6 +59,36 @@
 }
 .circle{
     border-radius: 50%!important;
+}
+input.cross_search_btn{
+    border: 1px solid rgb(200 200 200) !important;
+    border-radius: 16px 0px 0px 16px !important;
+}
+.nowhitespace{
+    white-space: nowrap;
+}
+.cross_info_icon{
+   background: #1e73be;
+   color: white!important;
+   font-weight: bold;
+   font-style: italic;
+   font-size: 20px!important;
+   padding: 5px 15px!important;
+   border-radius: 0px 16px 16px 0px !important;
+}
+.crossref_popup{
+    width: 50rem;
+}
+.eventinnercontainer{
+/*    background: #faf9f9; */
+    padding-top: 0%;
+   /* padding-right: 6%;
+    padding-left: 6%;*/
+}
+ .swiper-slide_event {
+  display: flex !important;
+  justify-content: center !important;
+/*  align-items: center !important;*/
 }
 .btn-drop:hover {
     background-color: #3284bf !important;
@@ -118,14 +177,21 @@ li.navigation__item.active a{
   padding-top: 121.212122%;
 }
 .quotetext{
-    font-size: 27px;
+    font-size: 22px;
     color: rgba(66, 66, 66, 1);
-    line-height: 50.2px;
+    line-height: 40.2px;
+}
+.aboutcontent p {
+    font-size: 16px;
 }
 .cardicon-abt{
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(236, 236, 236, 1);
     border-radius: 16px;
+    min-height: 402px;
+}
+.no-min-hgt{
+    min-height: auto!important;
 }
 .textminht{
     min-height: 50px;
@@ -138,11 +204,52 @@ li.navigation__item.active a{
 
   z-index: 2;
 }
+.contfs-16{
+    font-size: 16px;
+}
 .fs-14{
     font-size: 14px;
 }
+.pfs-16{
+    font-size: 16px;
+}
+.fs-18{
+    font-size: 18px;
+}
+.fs-16{
+    font-size: 16px;
+}
+.fs-30{
+    font-size: 30px;
+}
 .fs-38{
 	font-size: 38px;
+}
+.sliderfs{
+    font-size: 21px;
+}
+.why_p{
+    font-size: 17px;
+}
+.eventtextfs{
+    font-size: 14px!important;
+}
+.eventtextfs ul {
+    padding-left: 0.5rem;
+}
+.eventScrolldiv {
+    max-height: 165px; /* Set the maximum height for the scrollable area */
+    overflow-y: auto;  /* Add a vertical scrollbar when the content overflows */
+    padding-right: 15px; /* Optional: Add padding to the right to avoid content being hidden behind the scrollbar */
+    box-sizing: border-box; /* Ensure padding is included in the width/height */
+}
+.event-next, .event-prev{
+    color: #b8b7b7!important;
+    top: 40%;
+}
+
+:root {
+    --swiper-navigation-size: 28px;
 }
 
 .header_search_inp::placeholder {
@@ -236,12 +343,28 @@ li.navigation__item.active a{
 .hicon{
     height: 100px;
 }
+.whyicon{
+    height: 70px;
+}
+.hticon{
+    height: 80px;
+}
+.why_title{
+    font-size: 16px;
+}
 .cardicon{
     border: 1px solid rgba(236, 236, 236, 1);
     border-radius: 16px;
 }
 .imgclientslider{
     padding:25px;
+}
+.team_slider_div{
+    width:65%;    
+    margin: 0px auto;
+}
+.teamimg{
+    height: 96%;
 }
 .searchbg{
 /*    background-color: #000000;*/
@@ -254,7 +377,7 @@ li.navigation__item.active a{
     background-color: rgba(251, 251, 251, 1);
     padding:35px 25px;
     border-radius: 16px;
-    font-size: 16px;
+    font-size: 15px;
     color: rgba(120, 120, 120, 1);
     border: 1px solid rgba(179, 179, 179, 1);
 }
@@ -264,11 +387,11 @@ li.navigation__item.active a{
     display: block;
 }
 .eventimgdiv1{
-    width: 50%;
+    width: 40%;
     float: left;
 }
 .eventimgdiv2{
-    width: 50%;
+    width: 60%;
     float: left;
     padding: 0px 30px;
 }
@@ -281,7 +404,7 @@ li.navigation__item.active a{
     margin-right: 0px!important;
 }
 .filterbtns{
-    padding: 5px 28px!important;
+    padding: 5px 24px!important;
 }
 .btn1grey{
     color: #9C9C9C;
@@ -442,7 +565,10 @@ a.btn-link.d-inline-flex.align-items-center {
     border: 1px solid rgba(200, 200, 200, 1);
     border-radius: 16px;
     padding: 10px;
-    font-size: 12px;
+    font-size: 14px;
+}
+#compareModel p{
+    margin-bottom: 5px;
 }
 .pt-icon{
     margin-top: 4px;
@@ -564,14 +690,43 @@ a.btn-link.d-inline-flex.align-items-center {
     margin: auto;
 }
 
-
-
+/*all product types list css */
+.series_product_divs{
+    display: inline-block;
+    padding: 5px 10px;
+}
+.prodslidertab.active{
+    color: rgba(10, 132, 222, 1);
+}
+.prodslidertab:hover{
+    color: rgba(10, 132, 222, 1);
+}
 
 @media only screen and (max-width: 768px){
+    .why_title{
+        font-size: 18px;
+    }
+    .team_slider_div{
+        width: 100%;
+    }
+    .mbcrossDiv{
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+    .eventinnercontainer{
+        padding-right: unset;
+        padding-left: unset;
+    }
     .cmpimgcenter{
         height: 50px;
         display: flex;
         justify-content: center;
+    }
+    .eventScrolldiv {
+        max-height: unset; 
+        overflow-y: unset;  
+        padding-right: 15px;
+        box-sizing: border-box;
     }
     .docmodel{
         width: 100%!important;
@@ -590,6 +745,10 @@ a.btn-link.d-inline-flex.align-items-center {
     }
     .deskhidden{
         display: block;
+    }
+    .quotetext{
+        font-size: 18px;
+        line-height: 1.7143;
     }
 
     .mbrequest{
@@ -628,10 +787,14 @@ a.btn-link.d-inline-flex.align-items-center {
     }
     .cardicon-abt{
         text-align: center;
+        min-height: auto;
     }
     .eventimgdiv1{
         width: 100%;
         float: left;
+    }
+    .swiper-slide_event {
+        display: block !important
     }
     .eventimgdiv2{
         width: 100%;
@@ -853,5 +1016,19 @@ a.btn-link.d-inline-flex.align-items-center {
     }
     .mbrequest button{
         border-radius: 8px!important;
+    }
+}
+
+@media (max-width: 1192px) {
+    .mb-5 {
+        margin-bottom: 0rem !important;
+    }
+    .pb-xl-3 {
+        padding-bottom: 6rem !important;
+    }
+}
+@media (min-width: 1200px) {
+    .pb-xl-5 {
+        padding-bottom: 3rem !important;
     }
 }

@@ -39,6 +39,7 @@ class ManageEvent extends CI_Controller
                             'start_date'        => '',
                             'end_date'          => '',
                             'added_date'        => date("Y-m-d h:i:s"),
+                            'event_image_alt'   => $_POST['event_image_alt'],
                         );
             
             if($this->common->db_add('tbl_event',$add_data))
@@ -204,6 +205,7 @@ class ManageEvent extends CI_Controller
                             'start_date'        => '',
                             'end_date'          => '',
                             'added_date'        => date("Y-m-d h:i:s"),
+                            'event_image_alt'   => $_POST['event_image_alt'],
                         );
 
             if($this->common->db_update('tbl_event',$add_data,'e_id',$e_id))

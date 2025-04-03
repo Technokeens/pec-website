@@ -53,6 +53,14 @@
                        <label class="control-label" style="font-weight: normal;"><?=(!empty($detail['email'])) ? $detail['email'] : '-'; ?></label>
                      </div>
                   </div>
+
+                  <div class="hr-line-dashed"></div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Phone :  </label>
+                     <div class="col-sm-10">
+                       <label class="control-label" style="font-weight: normal;"><?=(!empty($detail['phone'])) ? $detail['phone'] : '-'; ?></label>
+                     </div>
+                  </div>
                   
                   <div class="hr-line-dashed"></div>
                   <div class="form-group">
@@ -88,6 +96,8 @@
                                  <th>Image</th>
                                  <th>Product Name</th>
                                  <th>Series Name</th>
+                                 <th>Resistance Value</th>
+                                 <th>Tolerance Value</th>
                                  <th>Quantity</th>
                               </tr>
                            </thead>
@@ -103,6 +113,8 @@
                                        <td><img src="<?=$value['product_image']?>" style="width: 100px;height: 100px;" /></td>
                                        <td><?=(!empty($value['product_name'])) ? $value['product_name'] : ''; ?></td>
                                        <td><?=(!empty($value['series_name'])) ? $value['series_name'] : ''; ?></td>
+                                       <td><?=(!empty($value['resistance_value'])) ? $value['resistance_value'] : '-'; ?></td>
+                                       <td><?=(!empty($value['tolerance_value'])) ? $value['tolerance_value'] : '-'; ?></td>
                                        <td><?=(!empty($value['qty'])) ? $value['qty'] : '1'; ?></td>
                                     </tr>
                                   <?php  

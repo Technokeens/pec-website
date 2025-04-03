@@ -255,6 +255,10 @@ class Admin extends CI_Controller
                 $fax            = $this->input->post('fax',true);
                 $email          = $this->input->post('email',true);
 
+                $seo_title        = $this->input->post('seo_title',true);
+                $seo_keywords     = $this->input->post('seo_keywords',true);
+                $seo_description  = $this->input->post('seo_description',true);
+
                 $update_data    = array(
                     'address_type'  => 'Main',
                     'company_name'  => $company_name,
@@ -265,7 +269,11 @@ class Admin extends CI_Controller
                     'person_name'   => $person_name,
                     'phone'         => $phone,
                     'fax'           => $fax,
-                    'email'         => $email,    
+                    'email'         => $email,  
+                    'seo_title'     => $seo_title,
+                    'seo_keywords'   => $seo_keywords,  
+                    'seo_description' => $seo_description,
+
                 );
 
                 if(!empty($_POST['main_edit_id'])){
@@ -319,6 +327,9 @@ class Admin extends CI_Controller
                 'phone'         => $phone,
                 'fax'           => '',
                 'email'         => $email,    
+                'seo_title'     => '',
+                'seo_keywords'   => '',  
+                'seo_description' => '',
             );
             $this->common->db_add('tbl_contact_us',$add_data);
             $this->session->set_flashdata('success','Contact Us information updated successfully!');

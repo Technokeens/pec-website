@@ -21,16 +21,21 @@ class Home extends CI_Controller
         // $this->session->keep_flashdata('success');     
     }
     
+    
     public function index()
     {   
         $data = array();
         $head = array();
 
-        $head['title']          = 'PEC | Home';
-        $head['description']    = 'PEC | Home';
-        $head['keywords']       = 'PEC | Home';
+        $setting=$this->common->fetchsingledata('*','tbl_website_setting',' WHERE wid=1');
 
-        $data['sliders']      = $this->common->fetchdata('*','tbl_slider','where status="1" ORDER BY id ASC');
+        $head['title']          = $setting['seo_title'];
+
+        $head['description']    = $setting['seo_description'];
+
+        $head['keywords']       = $setting['seo_keywords'];
+
+        $data['sliders']      = $this->common->fetchdata('*','tbl_slider','where status="1" ORDER BY id DESC');
 
         $data['applications'] = $this->common->fetchdata('*','tbl_application','where status="1" AND delete_status = "0" AND show_as_home ="on" ORDER BY position ASC LIMIT 6');
 
@@ -55,9 +60,9 @@ class Home extends CI_Controller
         $data = array();
         $head = array();
 
-        $head['title']          = 'PEC | About';
-        $head['description']    = 'PEC | About';
-        $head['keywords']       = 'PEC | About';
+        $head['title']          = 'About Us - PEC';
+        $head['description']    = 'Since 1972, PEC has been crafting innovative, certified resistors with unmatched quality and reliability for industries worldwide.';
+        $head['keywords']       = 'Resistor';
 
         $this->load->view('layout/header',$head);
         $this->load->view('about',$data);
@@ -69,9 +74,9 @@ class Home extends CI_Controller
         $data = array();
         $head = array();
 
-        $head['title']          = 'PEC | Product Series';
-        $head['description']    = 'PEC | Product Series';
-        $head['keywords']       = 'PEC | Product Series';
+        $head['title']          = "Explore Advanced Power Resistor Products - PEC";
+        $head['description']    = "Discover PEC's wide range of power resistors, including wirewound, axial, tubular, and braking resistor solutions. Designed for reliability and diverse applications.";
+        $head['keywords']       = "Power Resistors";
 
         $data['applications'] = $this->common->fetchdata('*','tbl_application','where status="1" AND delete_status = "0" ORDER BY position ASC');
         $data['constructions'] = $this->common->fetchdata('*','tbl_construction','where status="1" AND delete_status = "0" ORDER BY position ASC');
@@ -251,9 +256,6 @@ class Home extends CI_Controller
     {
         $data = array();
         $head = array();
-        $head['title']          = 'PEC | Product';
-        $head['description']    = 'PEC | Product';
-        $head['keywords']       = 'PEC | Product';
 
         $get=$_GET; 
         if (!empty($get['per_page']) && $get['per_page']!=0) {
@@ -270,6 +272,10 @@ class Home extends CI_Controller
         }
         $data['links_pagination'] = seriespagination($series_slug, $rowscount, $this->num_rows);
 
+        $head['title']          = (!empty($data['series_data']['seo_title'])) ? $data['series_data']['seo_title'] : 'PEC | Product';
+        $head['description']    = (!empty($data['series_data']['seo_description'])) ? $data['series_data']['seo_description'] : 'PEC | Product';
+        $head['keywords']       = (!empty($data['series_data']['seo_keywords'])) ? $data['series_data']['seo_keywords'] : 'PEC | Product';
+
         $this->load->view('layout/header',$head);
         $this->load->view('product',$data);
         $this->load->view('layout/footer',$head);
@@ -279,10 +285,6 @@ class Home extends CI_Controller
     {
         $data = array();
         $head = array();
-
-        $head['title']          = 'PEC | Product Details';
-        $head['description']    = 'PEC | Product Details';
-        $head['keywords']       = 'PEC | Product Details';
 
         $get=$_GET;  
         $page = 1;
@@ -302,6 +304,10 @@ class Home extends CI_Controller
         }
         $data['getproducts'] = $this->common->fetchdata('product_name,slug,position','tbl_product','where series_id="'.$data['product_data']['series_id'].'" AND status="1" AND delete_status = "0" ORDER BY position ASC');
 
+        $head['title']          = (!empty($data['product_data']['meta_title'])) ? $data['product_data']['meta_title'] : 'PEC | Product Details';
+        $head['description']    = (!empty($data['product_data']['meta_description'])) ? $data['product_data']['meta_description'] : 'PEC | Product Details';
+        $head['keywords']       = (!empty($data['product_data']['meta_keyword'])) ? $data['product_data']['meta_keyword'] : 'PEC | Product Details';
+
         $this->load->view('layout/header',$head);
         $this->load->view('product_detail',$data);
         $this->load->view('layout/footer',$head);
@@ -312,12 +318,13 @@ class Home extends CI_Controller
         $data = array();
         $head = array();
 
-        $head['title']          = 'PEC | Contact';
-        $head['description']    = 'PEC | Contact';
-        $head['keywords']       = 'PEC | Contact';
-
         $data['mainaddress']      = $this->common->fetchsingledata('*','tbl_contact_us',' where id="1"');
         $data['address']      = $this->common->fetchdata('*','tbl_contact_us',' where id!="1"');
+
+        $head['title']          = (!empty($data['mainaddress']['seo_title'])) ? $data['mainaddress']['seo_title'] : 'Precision Electronic Component | Contact';
+        $head['description']    = (!empty($data['mainaddress']['seo_keywords'])) ? $data['mainaddress']['seo_keywords'] : 'Precision Electronic Component | Contact';
+        $head['keywords']       = (!empty($data['mainaddress']['seo_description'])) ? $data['mainaddress']['seo_description'] : 'Precision Electronic Component | Contact';
+
 
         $this->load->view('layout/header',$head);
         $this->load->view('contact',$data);
@@ -331,6 +338,7 @@ class Home extends CI_Controller
             $add_data = array(
                 'lead_name'     => (!empty($_POST['lead_name'])) ? $_POST['lead_name'] : '',
                 'lead_email'    => (!empty($_POST['lead_email'])) ? $_POST['lead_email'] : '',
+                'lead_phone'    => (!empty($_POST['lead_phone'])) ? $_POST['lead_phone'] : '',
                 'lead_subject'  => (!empty($_POST['lead_subject'])) ? $_POST['lead_subject'] : '',
                 'lead_message'  => (!empty($_POST['lead_message'])) ? $_POST['lead_message'] : '',
                 'created_on'    => date('Y-m-d H:i:s'),
@@ -347,12 +355,12 @@ class Home extends CI_Controller
                 $this->session->set_flashdata('error', 'Something went wrong!');
             }
 
-            redirect(base_url().'contact');
+            redirect(base_url().'contact-us');
             
         }else
         {
             $this->session->set_flashdata('error','Please fill the form required fields');
-             redirect(base_url().'contact');
+             redirect(base_url().'contact-us');
         }
 
     }
@@ -375,10 +383,12 @@ class Home extends CI_Controller
            
             $lead_name = (!empty($_POST['lead_name'])) ? ucfirst($_POST['lead_name']) :'';
             $lead_subject = (!empty($_POST['lead_subject'])) ? ucfirst($_POST['lead_subject']) : '';
+            $lead_phone = (!empty($_POST['lead_phone'])) ? ucfirst($_POST['lead_phone']) : '';
 
             $fullname = $lead_name;
             $str = str_replace('@LOGO@',$logo,$str);
             $str = str_replace('@NAME@',$fullname,$str);
+            $str = str_replace('@PHONE@',$lead_phone,$str);
             $str = str_replace('@DATE@',date('d-m-Y'),$str);
             $str = str_replace('@SITENAME@',ucfirst($siteName),$str);
             
@@ -397,6 +407,7 @@ class Home extends CI_Controller
             $str = str_replace('@FIRSTNAME@',$fullname,$str);
             $str = str_replace('@LOGO@',$logo,$str);
             $str = str_replace('@EMAIL@',$_POST['lead_email'],$str);  
+            $str = str_replace('@PHONE@',$lead_phone,$str);
             $str = str_replace('@MESSAGE@',$_POST['lead_message'],$str);
             $str = str_replace('@SUBJECT@',$_POST['lead_subject'],$str);
             $str = str_replace('@DATE@',date('d-m-Y'),$str);
@@ -425,9 +436,9 @@ class Home extends CI_Controller
         $data = array();
         $head = array();
 
-        $head['title']          = 'PEC | Application List';
-        $head['description']    = 'PEC | Application List';
-        $head['keywords']       = 'PEC | Application List';
+        $head['title']          = 'Versatile Resistor Solutions for All Applications - PEC';
+        $head['description']    = 'Explore PEC’s resistors designed for automotive, energy metering, renewable energy, medical, telecom, and more. Reliable solutions for diverse industries!';
+        $head['keywords']       = 'Resistors For Automotive, Renewable Energy, Medical, Traction';
 
         $data['applications']      = $this->common->fetchdata('*','tbl_application',' where status="1" AND delete_status="0" ORDER BY position ASC');
         // $data['address']      = $this->common->fetchdata('*','tbl_contact_us',' where id!="1"');
@@ -449,6 +460,10 @@ class Home extends CI_Controller
         $data['application']      = $this->common->fetchsingledata('*','tbl_application',' where slug = "'.$slug.'" ');
         $data['application_related_series'] = $this->public_model->application_related_series($data['application']['t_id']);
 
+        $head['title']          = (!empty($data['application']['seo_title'])) ? $data['application']['seo_title'] : 'PEC | View Application';
+        $head['description']    = (!empty($data['application']['seo_description'])) ? $data['application']['seo_description'] : 'PEC | View Application';
+        $head['keywords']       = (!empty($data['application']['seo_keywords'])) ? $data['application']['seo_keywords'] : 'PEC | View Application';
+
         $this->load->view('layout/header',$head);
         $this->load->view('view_application',$data);
         $this->load->view('layout/footer',$head);
@@ -459,8 +474,8 @@ class Home extends CI_Controller
         $data = array();
         $head = array();
 
-        $head['title']          = 'PEC | Terms of service';
-        $head['description']    = 'PEC | Terms of service';
+        $head['title']          = 'Terms of Service - Precision Electronic Components Mfg Co.';
+        $head['description']    = 'Understand our terms of service, warranties, and usage rules. Using our site means you agree to these terms. Got questions? Reach out! ';
         $head['keywords']       = 'PEC | Terms of service';
 
         $this->load->view('layout/header',$head);
@@ -473,13 +488,44 @@ class Home extends CI_Controller
         $data = array();
         $head = array();
 
-        $head['title']          = 'PEC | Privacy Policy';
-        $head['description']    = 'PEC | Privacy Policy';
+        $head['title']          = 'Privacy Policy | How We Use & Protect Your Data';
+        $head['description']    = 'We collect info like your name, email, and usage data to improve services. Your data stays secure. Want details? Check out our privacy policy!';
         $head['keywords']       = 'PEC | Privacy Policy';
 
         $this->load->view('layout/header',$head);
         $this->load->view('privacy_policy',$data);
         $this->load->view('layout/footer',$head);
+    }
+
+    public function testmail()
+    {   
+        
+        $website      = $this->common->fetchsingledata('*','tbl_website_setting',' where wid="1"'); 
+        $mailsetting      = $this->common->fetchsingledata('*','tbl_mailsetting',' where id="1"');
+
+        $smtpuser = (!empty($mailsetting['smtpuser'])) ? $mailsetting['smtpuser'] : '';
+        $this->common->setting_smtp();
+        $this->email->set_newline("\r\n");
+        $this->email->from($smtpuser);
+        $this->email->bcc('');
+        $this->email->cc('');
+        $this->email->to('ashita.kumawat@technokeens.com');
+        $this->email->subject('Thank you for contacting us');
+        $this->email->set_mailtype("html");
+        $this->email->message('Test mail'); 
+       
+        if($this->email->send())
+        {
+            echo "mail send";
+            exit();
+        }else{
+            echo "no mail send";
+            echo $this->email->print_debugger();
+           exit();
+        }
+        
+        
+     
     }
     
 }

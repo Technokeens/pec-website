@@ -50,6 +50,7 @@
                                           <th>Sr. No.</th>
                                           <th>Name</th>
                                           <th>Email</th>
+                                          <th>Phone</th>
                                           <th>Message</th>
                                           <th>Date</th>
                                           <th>Action</th>
@@ -57,6 +58,7 @@
                                  </thead>
                                  <tbody>
                                      <tr>
+                                         <td></td>
                                          <td></td>
                                          <td></td>
                                          <td></td>
@@ -109,7 +111,8 @@
             "columns":[
                 { "data": "sr_no" },   
                 { "data": "name" }, 
-                { "data": "email" },    
+                { "data": "email" },  
+                { "data": "phone" },    
                 { "data": "message" },     
                 { "data": "created_on" },    
                 { "data": "action" },

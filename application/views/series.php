@@ -5,6 +5,7 @@
   $filterc2 = "";
   $filterp3 = "";
   $product_filter_url="";
+  $filtersearch_cr="";
   if(!empty($_GET['application'])){
      $filtera1 = '&application='.$_GET['application'];
   }
@@ -14,10 +15,14 @@
   if(!empty($_GET['power'])){
      $filterp3 = '&power='.$_GET['power'];
   }
+  if(!empty($_GET['search_cr'])){
+     $filtersearch_cr = '&search_cr='.$_GET['search_cr'];
+  }
   if(!empty($_GET['search'])){
      $filtersearch = '?search='.$_GET['search'];
   }
-  $product_filter_url = $filtersearch.$filtera1.$filterc2.$filterp3;
+
+  $product_filter_url = $filtersearch.$filtersearch_cr.$filtera1.$filterc2.$filterp3;
 ?>
 <div class="mb-5 pb-xl-5"></div>
 <main style="padding-top: 10%;">
@@ -31,6 +36,18 @@
         </div><!-- /.aside-header -->
 
         <div class="pt-4 pt-lg-0"></div>
+        <h5 class="filter_title mb-4">Cross Reference Search</h5>
+
+        <div class="form-floating my-2 mb-4 d-flex mbcrossDiv">
+          <input type="text" class="form-control cross_search_btn" name="search_cr" id="search_cr" placeholder="Enter Part Number " autocomplete="off" value="<?=(!empty($_GET['search_cr'])) ? $_GET['search_cr'] : ''; ?>">
+          <!-- minlength="3" -->
+          <button type="button" class="btn btn-outline-planbtn border-0 fs-base btn-45 align-right cross_model cross_info_icon" title="Cross Reference Search Guidelines">i</button>
+        </div>
+
+        <!-- <div class="form-floating my-2 mb-4 d-flex">
+          <input type="text" class="form-control" name="search_cr" id="search_cr" placeholder="Enter Product Type" autocomplete="off" minlength="3" value="<?=(!empty($_GET['search_cr'])) ? $_GET['search_cr'] : ''; ?>" style="border-radius: 16px;">
+          <button type="button" class="btn  border-0 fs-base align-right cross_model " title="Cross Reference Search" style="padding: 0px 10px;background: #1e73be;height: 24px;line-height: 2px;color: white;float: left;margin: 10px 0px 0px 10px;">i</button>
+        </div> -->
         <h5 class="filter_title mb-4">Parametric Filters</h5>
         <div id="product_single_details_accordion" class="product-single__details-accordion accordion mb-0">
             <div class="accordion-item">
@@ -276,7 +293,7 @@
                     <div class="swiper-container background-img js-swiper-slider" data-settings='{"resizeObserver": true}'>
                       <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                          <a href="<?=base_url().'product/'.$svalue['slug'];?><?=$product_filter_url;?>"><img loading="lazy" src="<?=$image;?>" alt="<?=(!empty($svalue['title'])) ? ucfirst($svalue['title']) : ''; ?>" class="pc__img"></a>
+                          <a href="<?=base_url().'product/'.$svalue['slug'];?><?=$product_filter_url;?>"><img loading="lazy" src="<?=$image;?>" alt="<?=(!empty($svalue['series_image_alt'])) ? ucfirst($svalue['series_image_alt']) : ''; ?>" class="pc__img"></a>
                         </div>
                       </div>
                     </div>
@@ -315,9 +332,9 @@
     <div class="container">
       <div class="row cutomsolbg">
         <div class="col-lg-12">
-            <h3 class="section-title text-capitalize text-left mb-3">Custom Solutions</h3>
+            <h1 class="section-title text-capitalize text-left mb-3">Custom Solutions</h1>
             <p>PEC has been at the forefront of developing custom resistors solutions for our global and India customers.  In most critical applications, a degree of customization is required to handle field electrical & physical usage conditions.</p>
-            <a href="<?=base_url();?>contact"><button class="btn btn-outline-primary border-0 fs-base text-capitalize btn-45">
+            <a href="<?=base_url();?>contact-us"><button class="btn btn-outline-primary border-0 fs-base text-capitalize btn-45">
               Talk To Sales
             </button></a>
         </div>
@@ -326,24 +343,59 @@
   </section>
 </main>
 
+<!-- Cross Reference Note POPUP -->
+<div class="modal fade" id="crossModel" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog newsletter-popup crossref_popup modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close close_refresh" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="row p-4 m-0">
+        <h5 class="">Cross Reference Search Guidelines</h5>
+        <hr/>
+        <div class="row pt-3 fs-16">
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pfs-16">
+            <h6>How to Search for Equivalent Resistor Types?</h6>
+            <ol>
+              <p> Please enter the product type of the resistor you would like to find an equivalent for into the search box: </p>
+
+              <li style="padding-left: 10px;" class="mb-2"> If you would like to find an equivalent for the following part – <b>VHPR60 H UL 10R K 300 </b>, please enter only the product type <b> VHPR60 </b> into the search box without extra spaces at the beginning or the end to get the required results. </li>
+              <li style="padding-left: 10px;" class="mb-2"> If you are looking for <b> Z304-C 3 270R 5 % AC G53 C04 </b> equivalent, please type in <b>Z304-C</b> in the search box to get our closest equivalent PEC product type. </li>
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   $(document).ready(function(){
+    $('#search_cr').change(function() {
+      $('#filterform').submit();
+      // let count = $('input[name=application]:checked').length;
+      // $('#application_count_onchange').html('('+count+')');
+      checkboxallcount();
+    });
     $('.applicat_checkbox').change(function() {
       let count = $('input[name=application]:checked').length;
       $('#application_count_onchange').html('('+count+')');
       checkboxallcount();
+      $('#filterform').submit();
     });
 
     $('.constr_checkbox').change(function() {
       let ccount = $('input[name=construction]:checked').length;
       $('#constr_count_onchange').html('('+ccount+')');
       checkboxallcount();
+      $('#filterform').submit();
     });
 
     $('.power_checkbox').change(function() {
       let pcount = $('input[name=power]:checked').length;
       $('#power_count_onchange').html('('+pcount+')');
       checkboxallcount();
+      $('#filterform').submit();
     });
 
     function checkboxallcount(){
@@ -369,6 +421,8 @@
       let apptnurl = '';
       let construrl = '';
       let powerurl = '';
+      let search_cr_url = $('#search_cr').val();
+
       $("input:checkbox[name=application]:checked").each(function() { 
           array.push($(this).val()); 
       });  
@@ -390,12 +444,20 @@
         powerurl = '&power=' + arraypower;
       }
 
-      const actionUrl = site_url + apptnurl + construrl + powerurl;
+      if(search_cr_url){
+        search_cr_url = '&search_cr=' + search_cr_url;
+      }
+
+      const actionUrl = site_url + apptnurl + construrl + powerurl + search_cr_url;
       window.location.href = actionUrl;
   }); 
 
   $(document).on('click', '.resetfilter', function() {
     window.location.href = "<?=base_url();?>"+'product';
+  });
+
+  $(document).on('click', '.cross_model', function() {
+    $("#crossModel").modal("show");
   });
 
 </script>

@@ -152,6 +152,13 @@
                         <?php echo form_error('series_image', '<div class="error">', '</div>'); ?>
                         <p style="color: green;">Note :  Diamension size atleast 530px X 464px for product image. </p>
                      </div>
+
+                     <label class="col-sm-2 control-label">Alternative Text</label>
+                     <div class="col-sm-10">
+                        <input name="series_image_alt" id="series_image_alt" type="text" class="form-control" style="margin:0 0 0 0px;" multiple=false >
+                        <p style="color: green;">Note :  Add Alternative Text for Image. </p>
+                     </div>
+
                   </div>
                   
                   <div class="hr-line-dashed"></div>

@@ -185,8 +185,32 @@ class Common extends CI_Model
 	// 	}
 	// }
 
+	// public function setting_smtp()
+	// {
+	// 	$permission=TRUE;
+	// 	if($permission==TRUE)
+	// 	{
+	// 		$data = $this->fetchsingledata('*','tbl_mailsetting',' WHERE `id` = 1 ');
+        	
+	// 		$config['protocol']    	= 'smtp';
+	// 		$config['smtp_host']    = $data['smtphost'];
+	// 		$config['smtp_port']    = $data['smtpport'];
+	// 		$config['smtp_timeout'] = '7';
+	// 		$config['smtp_user']    = $data['smtpuser'];
+	// 		$config['smtp_pass']    = base64_decode($data['smtppass']);
+	// 		$config['charset']    	= 'utf-8';
+	// 		$config['newline'] = "\r\n";
+	// 		$config['mailtype'] 	= 'html'; // or html
+	// 		$config['validation'] 	= TRUE; // bool whether to validate email or not  
+	// 		$this->email->initialize($config);	
+	// 		$this->email->set_newline("\r\n");
+	// 	}
+	// }
+
+	//outlook smtp
 	public function setting_smtp()
 	{
+
 		$permission=TRUE;
 		if($permission==TRUE)
 		{
@@ -195,9 +219,10 @@ class Common extends CI_Model
 			$config['protocol']    	= 'smtp';
 			$config['smtp_host']    = $data['smtphost'];
 			$config['smtp_port']    = $data['smtpport'];
-			$config['smtp_timeout'] = '7';
+			$config['smtp_timeout'] = '30';
 			$config['smtp_user']    = $data['smtpuser'];
 			$config['smtp_pass']    = base64_decode($data['smtppass']);
+			$config['smtp_crypto']  =  'tls';
 			$config['charset']    	= 'utf-8';
 			$config['newline'] = "\r\n";
 			$config['mailtype'] 	= 'html'; // or html
@@ -205,7 +230,10 @@ class Common extends CI_Model
 			$this->email->initialize($config);	
 			$this->email->set_newline("\r\n");
 		}
+
 	}
+
+
 
 	/* Random 10 digit number Start */ 
 	function randomPrefix($length)

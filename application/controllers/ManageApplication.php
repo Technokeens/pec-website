@@ -52,6 +52,12 @@ class ManageApplication extends CI_Controller
                     $meta_title         = $this->input->post('meta_title',true);
                     $slug               = ""; 
                     $show_as_home =$this->input->post('show_as_home',true);
+
+                    $application_image_alt = (!empty($_POST['application_image_alt'])) ? $_POST['application_image_alt'] : '';
+                    $application_icon_white_alt = (!empty($_POST['application_icon_white_alt'])) ? $_POST['application_icon_white_alt'] : '';
+                    $banner_image_alt = (!empty($_POST['banner_image_alt'])) ? $_POST['banner_image_alt'] : '';
+
+
                     if(empty($show_as_home))
                     {
                         $show_as_home="off";
@@ -65,6 +71,9 @@ class ManageApplication extends CI_Controller
                                     'seo_keywords'          => $meta_keyword,
                                     'seo_description'       => $meta_description,
                                     'seo_title'             => $meta_title,
+                                    'application_image_alt'      => $application_image_alt,
+                                    'application_icon_white_alt' => $application_icon_white_alt,
+                                    'banner_image_alt'          => $banner_image_alt,
                                     'created_on'            => date("Y-m-d H:i:s"),
                                     'status'                => '1',
                                     'slug'                  => $slug
@@ -403,6 +412,10 @@ class ManageApplication extends CI_Controller
                     {
                         $show_as_home="off";
                     } 
+
+                    $application_image_alt = (!empty($_POST['application_image_alt'])) ? $_POST['application_image_alt'] : '';
+                    $application_icon_white_alt = (!empty($_POST['application_icon_white_alt'])) ? $_POST['application_icon_white_alt'] : '';
+                    $banner_image_alt = (!empty($_POST['banner_image_alt'])) ? $_POST['banner_image_alt'] : '';
                   
                     $add_data=array(
                                     'title'                 => $title,
@@ -410,6 +423,9 @@ class ManageApplication extends CI_Controller
                                     'position'              => $position,
                                     'show_as_home'          => $show_as_home,
                                     'short_description'     => $short_description,
+                                    'application_image_alt'      => $application_image_alt,
+                                    'application_icon_white_alt' => $application_icon_white_alt,
+                                    'banner_image_alt'          => $banner_image_alt,
                                     'seo_keywords'          => $meta_keyword,
                                     'seo_description'       => $meta_description,
                                     'seo_title'             => $meta_title,

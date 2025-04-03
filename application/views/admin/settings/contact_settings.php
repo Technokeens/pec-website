@@ -105,8 +105,29 @@
                               <input type="text" id="fax" name="fax" class="form-control" value="<?=(!empty($contacts['fax'])) ? $contacts['fax'] : '';?>">
                            </div>
                         </div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                          
+                           <label class="col-sm-2 control-label">SEO Title</label>
+                           <div class="col-sm-6">
+                              <input type="text" name="seo_title" id="seo_title" class="form-control" value="<?=(!empty($contacts['seo_title'])) ? $contacts['seo_title'] : ''; ?>">
+                              <?php echo form_error('seo_title', '<div class="error">', '</div>'); ?>
+                           </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">SEO Keywords</label>
+                           <div class="col-sm-6">
+                              <input type="text" name="seo_keywords" id="seo_keywords" class="form-control" value="<?=(!empty($contacts['seo_keywords'])) ? $contacts['seo_keywords'] : ''; ?>">
+                              <?php echo form_error('seo_keywords', '<div class="error">', '</div>'); ?>
+                           </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">SEO Description</label>
+                           <div class="col-sm-6">
+                              <textarea name="seo_description" id="seo_description" class="form-control"><?=(!empty($contacts['seo_description'])) ? $contacts['seo_description'] : ''; ?></textarea>
+                              <?php echo form_error('seo_description', '<div class="error">', '</div>'); ?>
+                           </div>
                         </div>
 
                         
@@ -224,6 +245,10 @@
         var fax                 = $('#fax').val();
         var emailid             = $('#emailid').val();
 
+        var seo_title = $('#seo_title').val();
+        var seo_keywords  = $('#seo_keywords').val();
+        var seo_description = $('#seo_description').val();
+
         var reg                 = /^\d+$/;
         var pattern             = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
@@ -326,6 +351,28 @@
        else
        {
         remove_error("fax");       
+       }
+
+       if(seo_title == "")
+       {
+         show_error("seo_title","Please enter seo title");
+         flag=1;
+       }else{
+         remove_error("seo_title");
+       }
+       if(seo_keywords == "")
+       {
+         show_error("seo_keywords","Please enter seo keywords");
+         flag=1;
+       }else{
+         remove_error("seo_keywords");
+       }
+       if(seo_description == "")
+       {
+         show_error("seo_description","Please enter seo description");
+         flag=1;
+       }else{
+         remove_error("seo_description");
        }
    
        if(flag==1)

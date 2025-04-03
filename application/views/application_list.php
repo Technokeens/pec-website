@@ -5,7 +5,7 @@
     <div class="flex-grow-1">
       <div class="d-flex justify-content-between mt-3">
         <div class="breadcrumb mb-0 d-md-block flex-grow-1 app_mb_center">
-          <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4 pl-10">Applications</h3>
+          <h1 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4 pl-10">Applications</h1>
         </div>
       </div>
 
@@ -20,11 +20,11 @@
                     <a href="<?=base_url();?>view-application/<?=$value['slug'];?>"><div class="service-promotion__icon mb-4">
                         <?php
                         if(!empty($value['application_image'])){ ?>
-                          <img src="<?=base_url();?>uploads/application/<?=$value['application_image']?>" class="hicon">
+                          <img src="<?=base_url();?>uploads/application/<?=$value['application_image']?>" class="hicon" alt="<?=(!empty($value['application_image_alt'])) ? $value['application_image_alt'] : ''; ?>">
                         <?php } ?>
                     </div></a>
                     <a href="<?=base_url();?>view-application/<?=$value['slug'];?>"><h3 class="service-promotion__title h5 primaryblue"><?=(!empty($value['title'])) ? ucfirst($value['title']) : ''; ?></h3></a>
-                    <p class="service-promotion__content text-secondary textminht_list"><?=(!empty($value['short_description'])) ? substr($value['short_description'],0,70) .' ...' : ''; ?></p>
+                    <p class="service-promotion__content text-secondary textminht_list"><?=(!empty($value['short_description'])) ? substr($value['short_description'],0,90) .' ...' : ''; ?></p>
                     <a href="<?=base_url();?>view-application/<?=$value['slug'];?>" class="primaryblue mb-4">Know More <i class="fa fa-long-arrow-right"></i></a>
                   </div>
                 </div>

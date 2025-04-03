@@ -34,10 +34,10 @@
                 $image = base_url().'assets/images/no-image.jpg';
               }
             ?>
-            <img src="<?=$image;?>" class="mb-4">
+            <img src="<?=$image;?>" class="mb-4" alt="<?=(!empty($series_data['series_image_alt'])) ? $series_data['series_image_alt'] : ''; ?>">
           </div>
           <div class="col-lg-5 h-md-100">
-              <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4"><?=(!empty($series_data['title'])) ? ucfirst($series_data['title']) : ''; ?> </h3>
+              <h1 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4"><?=(!empty($series_data['title'])) ? ucfirst($series_data['title']) : ''; ?> </h1>
               <?=(!empty($series_data['description'])) ? $series_data['description'] : ''; ?>
               <?php
                 if(!empty($series_data['file_folder']))
@@ -50,16 +50,19 @@
                     }
                     $implodename = implode(',', $arrnames); ?>
                     <button type="button" class="btn btn-outline-primary border-0 fs-base text-capitalize btn-45 mt-4 document_model" >Download Datasheet </button>
-                    <?php
-                  }
-                }
-              ?>
+                    <?php }else{ ?>
+                        <a href="<?=base_url();?>contact-us" title="Connect to Sales Team"><button type="button" class="btn btn-outline-primary border-0 fs-base text-capitalize btn-45 mt-4" > Connect to Sales Team </button></a>
+                      <?php
+                    }
+                }else{ ?>
+                    <a href="<?=base_url();?>contact-us" title="Connect to Sales Team"><button type="button" class="btn btn-outline-primary border-0 fs-base text-capitalize btn-45 mt-4" > Connect to Sales Team </button></a>
+                <?php } ?>
           </div>
         </div>
 
         <div class="d-flex justify-content-between">
           <div class="breadcrumb mb-0 d-none d-md-block flex-grow-1">
-            <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Product <span class="titlehighlight">Types</span></h3>
+            <h2 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Product <span class="titlehighlight">Types</span></h2>
           </div>
         </div>
 
@@ -83,6 +86,7 @@
                           $power_rating_array = array();
                           if(!empty($value['power_ids'])){
                             $explode = explode(',', $value['power_ids']);
+                            rsort($explode);
                             foreach ($explode as $prkey => $prvalue) {
                                 $power = $this->common->fetchsingledata('power_rating', 'tbl_power_rating',' WHERE pr_id="'.$prvalue.'"');
                                 $power_rating_array[] = $power['power_rating'];
@@ -104,8 +108,13 @@
                   </div>
                   <hr class="pt_bor_btm">
                   <div class="d-flex">
-                    <p class="pc__category mb-0">Dimensions Body Length - Height</p>
+                    <p class="pc__category mb-0">Dimensions Body Length/Height</p>
                     <p class="position-absolute end-0 text-black"><?=(!empty($value['dimension_height'])) ? number_format($value['dimension_height'],2,'.','') : '0.00'; ?>mm</p>
+                  </div>
+                  <hr class="pt_bor_btm">
+                  <div class="d-flex">
+                    <p class="pc__category mb-0">Dimensions Body Diameter/Width</p>
+                    <p class="position-absolute end-0 text-black"><?=(!empty($value['dimension_width'])) ? number_format($value['dimension_width'],2,'.','') : '0.00'; ?>mm</p>
                   </div>
                 </div>
               </div>

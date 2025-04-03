@@ -26,6 +26,25 @@
       
       <script src="<?=base_url();?>assets/js/plugins/jquery.min.js"></script>
       <link href="<?php echo base_url();?>admin_assets/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+      <!-- add canonical tags for all pages -->
+      <?php 
+          $canonical_url = base_url();
+          $get_segment_1 = $this->uri->segment(1);
+          $get_segment_2 = $this->uri->segment(2);
+          $get_segment_3 = $this->uri->segment(3);
+
+          if (!empty($get_segment_3) && !empty($get_segment_2) && !empty($get_segment_1)) {
+              $canonical_url = base_url() . $get_segment_1 . '/' . $get_segment_2 . '/' . $get_segment_3;
+          } elseif (!empty($get_segment_2) && !empty($get_segment_1)) {
+              $canonical_url = base_url() . $get_segment_1 . '/' . $get_segment_2;
+          } elseif (!empty($get_segment_1)) {  // Fixed else condition
+              $canonical_url = base_url() . $get_segment_1;
+          }
+      ?>
+
+      <link rel="canonical" href="<?= $canonical_url; ?>" />
+
       
    </head>
    <body>
@@ -191,7 +210,7 @@
             </a>
             <div class="logo">
                <a href="<?=base_url();?>">
-               <img src="<?=base_url();?>assets/images/peclogo.png" alt="Uomo" class="logo__image d-block">
+               <img src="<?=base_url();?>assets/images/peclogo.png" alt="PEC Logo" class="logo__image d-block">
                </a>
             </div>
             <div class="mbrequest">
@@ -233,17 +252,17 @@
                      <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "product"){ echo "active"; } ?>">
                         <a href="<?=base_url();?>product" class="navigation__link">Products</a>
                      </li>
-                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && ($this->uri->segment(1) == "application-list" || $this->uri->segment(1) == "view-application")){ echo "active"; } ?>">
-                        <a href="<?=base_url();?>application-list" class="navigation__link">Applications</a>
+                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && ($this->uri->segment(1) == "applications" || $this->uri->segment(1) == "view-application")){ echo "active"; } ?>">
+                        <a href="<?=base_url();?>applications" class="navigation__link">Applications</a>
                      </li>
-                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "about"){ echo "active"; } ?>">
-                        <a href="<?=base_url();?>about" class="navigation__link">About Us</a>
+                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "about-us"){ echo "active"; } ?>">
+                        <a href="<?=base_url();?>about-us" class="navigation__link">About Us</a>
                      </li>
-                     <!-- <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "blogs"){ echo "active"; } ?>">
+                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "blogs"){ echo "active"; } ?>">
                         <a href="<?=base_url();?>blogs" class="navigation__link">Blogs</a>
-                     </li> -->
-                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "contact"){ echo "active"; } ?>">
-                        <a href="<?=base_url();?>contact" class="navigation__link">Contact Us</a>
+                     </li>
+                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "contact-us"){ echo "active"; } ?>">
+                        <a href="<?=base_url();?>contact-us" class="navigation__link">Contact Us</a>
                      </li>
                   </ul>
                   <!-- /.navigation__list -->
@@ -279,29 +298,29 @@
             <div class="header-desk header-desk_type_1">
                <div class="logo">
                   <a href="<?=base_url();?>">
-                     <img src="<?=$logo;?>" alt="Logo" class="logo__image d-block">
+                     <img src="<?=$logo;?>" alt="PEC Logo" class="logo__image d-block">
                   </a>
                </div>
                <!-- /.logo -->
                <nav class="navigation">
-                  <ul class="navigation__list list-unstyled d-flex">
+                  <ul class="navigation__list list-unstyled d-flex nowhitespace">
                      <li class="navigation__item <?php if(empty($this->uri->segment(1))){ echo "active"; } ?>">
                         <a href="<?=base_url();?>" class="navigation__link ">Home</a>
                      </li>
                      <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "product"){ echo "active"; } ?>">
                         <a href="<?=base_url();?>product" class="navigation__link">Products</a>
                      </li>
-                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && ($this->uri->segment(1) == "application-list" || $this->uri->segment(1) == "view-application")){ echo "active"; } ?>">
-                        <a href="<?=base_url();?>application-list" class="navigation__link">Application</a>
+                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && ($this->uri->segment(1) == "applications" || $this->uri->segment(1) == "view-application")){ echo "active"; } ?>">
+                        <a href="<?=base_url();?>applications" class="navigation__link">Application</a>
                      </li>
-                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "about"){ echo "active"; } ?>">
-                        <a href="<?=base_url();?>about" class="navigation__link">About Us</a>
+                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "about-us"){ echo "active"; } ?>">
+                        <a href="<?=base_url();?>about-us" class="navigation__link">About Us</a>
                      </li>
-                     <!-- <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "blogs"){ echo "active"; } ?>">
+                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "blogs"){ echo "active"; } ?>">
                         <a href="<?=base_url();?>blogs" class="navigation__link">Blogs</a>
-                     </li> -->
-                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "contact"){ echo "active"; } ?>">
-                        <a href="<?=base_url();?>contact" class="navigation__link">Contact Us</a>
+                     </li>
+                     <li class="navigation__item <?php if(!empty($this->uri->segment(1)) && $this->uri->segment(1) == "contact-us"){ echo "active"; } ?>">
+                        <a href="<?=base_url();?>contact-us" class="navigation__link">Contact Us</a>
                      </li>
                   </ul>
                   <!-- /.navigation__list -->
@@ -316,7 +335,7 @@
                   </div>
                   <div class="header-tools__item">
                      <a class="header-tools__item" href="<?=base_url();?>request-quote">
-                     <button class="btn btn-outline-primary border-0 fs-base btn-45">
+                     <button class="btn btn-outline-primary border-0 fs-base btn-45 nowhitespace">
                      <span>Request a Quote <?=(!empty($_SESSION['quotecart']['product'])) ? '('.count($_SESSION['quotecart']['product']).')' : ''; ?></span>
                      </button></a>
                   </div>

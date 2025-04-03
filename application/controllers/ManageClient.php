@@ -31,6 +31,7 @@ class ManageClient extends CI_Controller
             $add_data = array(
                             'title'             => $title,
                             'created_date'      => date("Y-m-d h:i:s"),
+                            'image_alt'     => (!empty($_POST['image_alt'])) ? $_POST['image_alt'] : '',
                         );
             
             if($this->common->db_add('tbl_client',$add_data))
@@ -175,6 +176,7 @@ class ManageClient extends CI_Controller
             $add_data = array(
                             'title'        => $title,
                             'created_date' => date("Y-m-d h:i:s"),
+                            'image_alt'     => (!empty($_POST['image_alt'])) ? $_POST['image_alt'] : '',
                         );
 
             if($this->common->db_update('tbl_client',$add_data,'id',$id))

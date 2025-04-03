@@ -24,7 +24,7 @@
                   if(!empty($setting['logo']))
                   {
                 ?>
-                    <img src="<?=base_url()?>uploads/<?=$setting['logo'];?>" alt="logo" />
+                    <img src="<?=base_url()?>uploads/<?=$setting['logo'];?>" alt="PEC Logo" />
                 <?php }else{ ?>
                     <h1 class="logo-name">PEC</h1>
                 <?php } ?>

@@ -24,8 +24,8 @@ class Quote extends CI_Controller
         $data = array();
         $head = array();
 
-        $head['title']          = 'PEC | Request Quote';
-        $head['description']    = 'PEC | Request Quote';
+        $head['title']          = 'Get a Quote for High-Performance Power Resistors | PEC';
+        $head['description']    = "Have a project in mind? Share your details to get a customized quote for top-quality power resistors. We're here to help!";
         $head['keywords']       = 'PEC | Request Quote';
 
 
@@ -168,6 +168,8 @@ class Quote extends CI_Controller
                         'product_name' => $_POST['product_name'][$i],
                         'series_name' => $_POST['series_name'][$i],
                         'application_id' => $_POST['application_id'][$i],
+                        'resistance_value' => (!empty($_POST['resistance_value'][$i])) ? $_POST['resistance_value'][$i] : '-',
+                        'tolerance_value' => (!empty($_POST['tolerance_value'][$i])) ? $_POST['tolerance_value'][$i] : '-',
                         'qty' => $_POST['qty'][$i],
                     );
                 }
@@ -178,6 +180,7 @@ class Quote extends CI_Controller
                 'product_data' => $product_data,
                 'name' => (!empty($_POST['name'])) ? $_POST['name'] : '',
                 'email' => (!empty($_POST['email'])) ? $_POST['email'] : '',
+                'phone' => (!empty($_POST['phone'])) ? $_POST['phone'] : '',
                 'address' => (!empty($_POST['address'])) ? $_POST['address'] : '',
                 'message' => (!empty($_POST['message'])) ? $_POST['message'] : '',
                 'created_on' => date('Y-m-d H:i:s'),
@@ -226,12 +229,19 @@ class Quote extends CI_Controller
                                                     <p><b>Product</b></p>
                                                 </td>
                                                 <td valign="top" align="left">
+                                                    <p><b>Resistance Value</b></p>
+                                                </td>
+                                                <td valign="top" align="left">
+                                                    <p><b>Tolerance Value</b></p>
+                                                </td>
+                                                <td valign="top" align="left">
                                                     <p><b>Quantity</b></p>
                                                 </td>
                                             </tr>';
                 for ($i=0; $i < $cnt ; $i++) 
                 { 
-                    
+                    $resistance_value = (!empty($_POST['resistance_value'][$i])) ? $_POST['resistance_value'][$i] : '-';
+                    $tolerance_value = (!empty($_POST['tolerance_value'][$i])) ? $_POST['tolerance_value'][$i] : '-';
 
                     $product_array .= '
                             <tr>
@@ -239,7 +249,13 @@ class Quote extends CI_Controller
                                     <p><img src="'.$_POST['product_image'][$i].'" style="width:100px;height:70px" /></p>
                                 </td>
                                 <td valign="top" align="left">
-                                    <p>'.$_POST['series_name'][$i].' '.$_POST['series_name'][$i].'</p>
+                                    <p>'.$_POST['product_name'][$i].' - '.$_POST['series_name'][$i].'</p>
+                                </td>
+                                <td valign="top" align="left">
+                                    <p>'.$resistance_value.'</p>
+                                </td>
+                                <td valign="top" align="left">
+                                    <p>'.$tolerance_value.'</p>
                                 </td>
                                 <td valign="top" align="left">
                                     <p>'.$_POST['qty'][$i].'</p>
@@ -271,6 +287,7 @@ class Quote extends CI_Controller
             $str = str_replace('@FIRSTNAME@',$fullname,$str);
             $str = str_replace('@NAME@',$fullname,$str);
             $str = str_replace('@EMAIL@',$_POST['email'],$str);  
+            $str = str_replace('@PHONE@',$_POST['phone'],$str);  
             $str = str_replace('@MESSAGE@',$_POST['message'],$str);
             $str = str_replace('@ADDRESS@',$_POST['address'],$str);
             $str = str_replace('@PRODUCTDATA@',$product_array,$str);
@@ -293,6 +310,7 @@ class Quote extends CI_Controller
             $str = str_replace('@FIRSTNAME@',$fullname,$str);
             $str = str_replace('@LOGO@',$logo,$str);
             $str = str_replace('@EMAIL@',$_POST['email'],$str);  
+            $str = str_replace('@PHONE@',$_POST['phone'],$str);  
             $str = str_replace('@MESSAGE@',$_POST['message'],$str);
             $str = str_replace('@ADDRESS@',$_POST['address'],$str);
             $str = str_replace('@PRODUCTDATA@',$product_array,$str);
@@ -303,7 +321,7 @@ class Quote extends CI_Controller
             $this->email->bcc('');
             $this->email->cc('');
             $this->email->to($admin_mail);
-            $this->email->subject('Quotation Received');
+            $this->email->subject('Enquiry from the website');
             $this->email->set_mailtype("html");
             $this->email->message($str); 
             // print_r($str);exit();

@@ -49,6 +49,7 @@
                                      <tr>
                                           <th>Sr. No.</th>
                                           <th>Name</th>
+                                          <th>Phone</th>
                                           <th>Email</th>
                                           <th>Subject</th>
                                           <th>Date</th>
@@ -57,6 +58,7 @@
                                  </thead>
                                  <tbody>
                                      <tr>
+                                         <td></td>
                                          <td></td>
                                          <td></td>
                                          <td></td>
@@ -108,7 +110,8 @@
             "order": [[ 0, 'desc' ]],
             "columns":[
                 { "data": "sr_no" },   
-                { "data": "lead_name" }, 
+                { "data": "lead_name" },
+                { "data": "lead_phone" }, 
                 { "data": "lead_email" },    
                 { "data": "lead_subject" },     
                 { "data": "created_on" },    

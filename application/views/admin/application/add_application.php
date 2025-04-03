@@ -133,6 +133,18 @@
                         <p style="color: green;">Note :  Diamension size atleast 530px X 464px for product image. </p>
                      </div>
 
+                     <label class="col-sm-2 control-label">Alternative Text</label>
+                     <div class="col-sm-4">
+                        <input name="application_image_alt" id="application_image_alt" type="text" style="margin:0 0 0 0px;" class="meta_keyword form-control">
+                        <p style="color: green;">Note :  Add Alternative Text for Black Image. </p>
+                     </div>
+
+                     <label class="col-sm-2 control-label">Alternative Text</label>
+                     <div class="col-sm-4">
+                        <input name="application_icon_white_alt" id="application_icon_white_alt" type="text" style="margin:0 0 0 0px;" class="meta_keyword form-control">
+                        <p style="color: green;">Note :  Add Alternative Text for White Image. </p>
+                     </div>
+
                   </div>
                   
                   <div class="hr-line-dashed"></div>
@@ -144,6 +156,13 @@
                         <?php echo form_error('banner_image', '<div class="error">', '</div>'); ?>
                         <p style="color: green;">Note : Diamension size atleast 1350px X 400px for banner. </p>
                      </div>
+
+                     <label class="col-sm-2 control-label">Alternative Text</label>
+                     <div class="col-sm-4">
+                        <input name="banner_image_alt" id="banner_image_alt" type="text" style="margin:0 0 0 0px;" class="meta_keyword form-control">
+                        <p style="color: green;">Note :  Add Alternative Text for Banner Image. </p>
+                     </div>
+                     
                   </div>
                   <div class="hr-line-dashed"></div>
 

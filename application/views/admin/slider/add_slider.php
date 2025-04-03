@@ -69,9 +69,23 @@
                         <div id="slidererr"></div>
                      </div>
                   </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Alternative Text</label>
+                     <div class="col-sm-10">
+                        <input name="slider_image_alt" id="slider_image_alt" type="text" style="margin:0 0 0 0px;" class="meta_keyword form-control">
+                        <p style="color: green;">Note :  Add Alternative Text for Image. </p>
+                     </div>
+                  </div>
+
                   <div class="hr-line-dashed"></div>
                   <div class="form-group">
-                     <label class="col-sm-2 control-label">Url</label>
+                     <label class="col-sm-2 control-label">URL Button Label</label>
+                     <div class="col-sm-3">
+                        <input type="text" id="url_button_label" name="url_button_label" class="form-control">
+                        <?php echo form_error('url_button_label', '<div class="error">', '</div>'); ?>
+                     </div>
+
+                     <label class="col-sm-1 control-label">Url</label>
                      <div class="col-sm-6">
                         <input type="text" id="url" name="url" class="form-control" value="<?php echo set_value('url')?>">
                         <?php echo form_error('url', '<div class="error">', '</div>'); ?>

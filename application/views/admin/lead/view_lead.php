@@ -51,6 +51,13 @@
                   </div>
                   <div class="hr-line-dashed"></div>
                   <div class="form-group">
+                     <label class="col-sm-2 control-label">Phone :  </label>
+                     <div class="col-sm-10">
+                       <label class="control-label" style="font-weight: normal;"><?=(!empty($detail['lead_phone'])) ? $detail['lead_phone'] : '-'; ?></label>
+                     </div>
+                  </div>
+                  <div class="hr-line-dashed"></div>
+                  <div class="form-group">
                      <label class="col-sm-2 control-label">Email :  </label>
                      <div class="col-sm-10">
                        <label class="control-label" style="font-weight: normal;"><?=(!empty($detail['lead_email'])) ? $detail['lead_email'] : '-'; ?></label>

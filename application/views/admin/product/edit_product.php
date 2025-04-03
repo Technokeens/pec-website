@@ -184,7 +184,7 @@
 
                      <label class="col-sm-2 control-label">TCR PPM C</label>
                      <div class="col-sm-4">
-                        <input type="text" id="tcr_ppm_c" name="tcr_ppm_c" class="position form-control" value="<?=(!empty($detail['tcr_ppm_c'])) ? $detail['tcr_ppm_c'] : ''; ?>">
+                        <textarea id="tcr_ppm_c" name="tcr_ppm_c" class="position form-control"><?=(!empty($detail['tcr_ppm_c'])) ? $detail['tcr_ppm_c'] : ''; ?></textarea>
                      </div>
                      
                   </div>

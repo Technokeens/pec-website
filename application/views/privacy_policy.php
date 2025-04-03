@@ -3,7 +3,7 @@
     <div class="mb-5 pb-4 hidden-xs"></div>
     <section class="container mbbottom mb-5">
       <!-- <h2 class="section-title text-uppercase fw-bold mb-5">Privacy Policy</h2> -->
-      <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Privacy <strong class="titlehighlight">Policy</strong></h3>
+      <h1 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Privacy <strong class="titlehighlight">Policy</strong></h1>
       <h6 class="mb-3"> Information We Collect : Personal Information</h6>
       <p class="mb-2">While using our services, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:
         <ul>

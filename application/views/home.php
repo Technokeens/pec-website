@@ -5,12 +5,31 @@
      text-align: center;
      margin-top: 10px;
    }
+   .slideshow-bg {
+       position: relative;
+       width: 100%;
+       height: 100%;
+   }
+
+   .slideshow-overlay {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background-color: rgb(0 0 0 / 50%); /* Adjust color and opacity */
+       z-index: 1; /* Ensure overlay is above the image */
+   }
+
+   .slideshow-text {
+       z-index: 2; /* Ensure text is above the overlay */
+   }
 </style>
 <main>
    <section class="swiper-container js-swiper-slider slideshow type2 full-width"
       data-settings='{
       "autoplay": {
-      "delay": 5000
+      "delay": 10000
       },
       "slidesPerView": 1,
       "effect": "fade",
@@ -35,26 +54,37 @@
              }
          ?>
                <div class="swiper-slide">
-                <div class="overflow-hidden position-relative h-100">
-                  <div class="slideshow-bg">
-                    <img loading="lazy" src="<?=$image;?>" width="1903" height="896" alt="Pattern" class="slideshow-bg__img object-fit-cover" style="object-position: 80% center;">
-                  </div>
-                  <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
-                    <h2 class="text-capitalize text-white fw-bold mb-0 animate animate_fade animate_btt animate_delay-4 fs-38 textmb mb-3"><?=(!empty($slider['title'])) ? ucfirst($slider['title']) : ''; ?></h2>
-                    <div class="fs-6 mb-4 pb-2 text-white animate animate_fade animate_btt animate_delay-5 hidden-xs">
-                      <?=(!empty($slider['description'])) ? $slider['description'] : ''; ?>
-                    </div>
-                    <?php if(!empty($slider['url'])){ ?>
-                      <a href="<?=$slider['url']?>">
-                          <button class="btn btn-outline-primary border-0 fs-base text-capitalize animate animate_fade animate_btt animate_delay-7 btn-45 mt-3">
-                            Explore Products 
-                            <i class="fa fa-long-arrow-right"></i>
-                          </button>
-                      </a>
-                    <?php } ?>
-                  </div>
-                </div>
+                   <div class="overflow-hidden position-relative h-100">
+                       <div class="slideshow-bg">
+                           <img loading="lazy" src="<?=$image;?>" width="1903" height="896" alt="<?=(!empty($slider['slider_image_alt'])) ? $slider['slider_image_alt'] : ''; ?>" class="slideshow-bg__img object-fit-cover" style="object-position: 80% center;">
+                           <!-- Overlay Div -->
+                           <div class="slideshow-overlay"></div>
+                       </div>
+                       <div class="slideshow-text container position-absolute start-50 top-50 translate-middle ">
+                           <div class="">
+                               <h1 class="text-capitalize text-white fw-bold mb-0 animate animate_fade animate_btt animate_delay-4 fs-38 textmb mb-3">
+                                   <?=(!empty($slider['title'])) ? ucfirst($slider['title']) : ''; ?>
+                               </h1>
+                               <div class="sliderfs mb-1 pb-1 text-white animate animate_fade animate_btt animate_delay-5 hidden-xs">
+                                   <?=(!empty($slider['description'])) ? $slider['description'] : ''; ?>
+                               </div>
+                           </div>
+                           <?php if(!empty($slider['url'])){ ?>
+                           <a href="<?=$slider['url']?>">
+                               <button class="btn btn-outline-primary border-0 fs-base text-capitalize animate animate_fade animate_btt animate_delay-7 btn-45 mt-1">
+                                   <?php if(!empty($slider['url_button_label'])){
+                                        echo $slider['url_button_label'];
+                                   }else{
+                                        echo "Explore Products";
+                                   } ?>
+                                   <i class="fa fa-long-arrow-right"></i>
+                               </button>
+                           </a>
+                           <?php } ?>
+                       </div>
+                   </div>
                </div>
+
          <?php  
            }
          }
@@ -71,16 +101,14 @@
    <section class="collections-grid" >
       <div class="container ">
          <div class="row ">
-            <div class="col-lg-6  pr-5 mbbottom">
-               <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">About <strong class="titlehighlight">PEC</strong></h3>
+            <div class="col-lg-6  pr-5 mbbottom aboutcontent">
+               <h2 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Core <strong class="titlehighlight">Capabilities</strong></h2>
                <p>
-                  PEC has designed, manufactured, and delivered resistors to global customers for 50 years. We have a comprehensive range of power resistors for use in Industrial, Automotive, Traction, Power Systems, Medical Equipment, Renewable Energy, Electric Vehicles, Aviation and Military applications. 
+                  Our extensive range of power resistance solutions caters to a global clientele, including several Fortune 100 companies. We design and deliver resistors engineered for the most demanding applications, blending decades of experience with cutting-edge design expertise to help our partners meet both existing and innovative product needs, all while adhering to stringent global industry standards.
                </p>
-               <p>
-                  Our globally competent design centre works with customers to design resistors to meet complex customer applications where high voltage, high energy, heavy power overloads need to be handled. 
-               </p>
-               <p>We have numerous certifications like ISO 9001:2015, ISO 14001:2015, JSS 50402, IECQ & UL to cater to diverse requirements of our global customers.</p>
-                <a href="<?=base_url();?>about">
+              
+               <p>Certified to ISO 9001:2015, ISO 14001:2015, JSS 50402, IECQ, UL, and CE, we are fully equipped to meet the diverse requirements of our worldwide customers.</p>
+                <a href="<?=base_url();?>about-us">
                   <button class="btn btn-outline-primary border-0 fs-base text-capitalize mt-4  btn-45">
                     Know More <i class="fa fa-long-arrow-right"></i>
                   </button>
@@ -90,24 +118,24 @@
             <div class="col-lg-6">
                <div class="row">
                   <div class="col-lg-6 block1box mbcenter p-4">
-                     <img src="<?=base_url();?>assets/images/ab3.png" class="abicon mb-4">
+                     <img src="<?=base_url();?>assets/images/ab3.png" alt="50+ Years Of Experience" class="abicon mb-4">
                      <h2 class="primaryblue">50<span class="black">+</span></h2>
                      <p class="mb-0"><b>Years of Experience</b></p>
                   </div>
                   <div class="col-lg-6 block2box mbcenter p-4">
-                     <img src="<?=base_url();?>assets/images/ab5.png" class="abicon mb-4">
-                     <h2 class="primaryblue">1B<span class="black">+</span></h2>
+                     <img src="<?=base_url();?>assets/images/ab5.png" class="abicon mb-4" alt="1 Billion Plus Resistors Sold">
+                     <h2 class="primaryblue">1Bln <span class="black">+</span></h2>
                      <p class="mb-0"><b>Resistors Sold</b></p>
                   </div>
                </div>
                <div class="row">
                   <div class="col-lg-6 block3box mbcenter p-4">
-                     <img src="<?=base_url();?>assets/images/ab2.png" class="abicon mb-4">
-                     <h2 class="primaryblue">100<span class="black">M</span></h2>
+                     <img src="<?=base_url();?>assets/images/ab2.png" class="abicon mb-4" alt="100 Million Annual Capacity">
+                     <h2 class="primaryblue">100Mln<span class="black"></span></h2>
                      <p class="mb-0"><b>Annual Capacity</b></p>
                   </div>
                   <div class="col-lg-6 block4box mbcenter p-4">
-                     <img src="<?=base_url();?>assets/images/ab1.png" class="abicon mb-4">
+                     <img src="<?=base_url();?>assets/images/ab1.png" class="abicon mb-4" alt="1000 Plus Unique Designs">
                      <h2 class="primaryblue">1000<span class="black">+</span></h2>
                      <p class="mb-0"><b>Unique Designs</b></p>
                   </div>
@@ -216,7 +244,7 @@
    </section>
    <section class="service-promotion container mb-md-4 pb-md-4 mb-xl-5">
       <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4 ">Discover Products by <strong class="titlehighlight">Applications</strong>
-         <a href="<?=base_url();?>application-list" class="mbhidden"><button class="btn btn-outline-primary border-0 fs-base text-capitalize  btn-45 appright">
+         <a href="<?=base_url();?>applications" class="mbhidden"><button class="btn btn-outline-primary border-0 fs-base text-capitalize  btn-45 appright">
          Explore All Application <i class="fa fa-long-arrow-right"></i>
          </button></a>
       </h3>
@@ -237,7 +265,7 @@
                       
                    </div>
                    <h3 class="service-promotion__title h5 primaryblue"><?=(!empty($app_val['title'])) ? ucfirst($app_val['title']) : ''; ?></h3>
-                   <p class="service-promotion__content text-secondary textminht"><?=(!empty($app_val['short_description'])) ? substr($app_val['short_description'],0,100) : ''; ?></p>
+                   <p class="service-promotion__content text-secondary textminht"><?=(!empty($app_val['short_description'])) ? substr($app_val['short_description'],0,124).' ...' : ''; ?></p>
                    <a href="<?=(!empty($app_val['slug'])) ? 'view-application/'.$app_val['slug'] : 'javascript:;'; ?>" class="primaryblue">Know More <i class="fa fa-long-arrow-right"></i></a>
                 </div>
               </div>
@@ -248,7 +276,7 @@
           }
         ?>
          
-        <a href="<?=base_url();?>application-list" class="deskhidden"><button class="btn btn-outline-primary border-0 fs-base text-capitalize  btn-45 mt-4 mb-5">
+        <a href="<?=base_url();?>applications" class=""><button class="btn btn-outline-primary border-0 fs-base text-capitalize  btn-45 mt-4 mb-5">
          Explore All Application <i class="fa fa-long-arrow-right"></i>
          </button></a>
       </div>
@@ -359,35 +387,47 @@
    <!-- /.products-carousel container -->
    <div class="mb-4 pb-4 pb-xl-5 mb-xl-5"></div>
    <section class="service-promotion container mb-md-4 pb-md-4 mb-xl-5">
-      <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4 ">Why <strong class="titlehighlight">Us</strong></h3>
+      <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4 ">Why <strong class="titlehighlight">Us?</strong></h3>
       <div class="row">
-         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-4 pb-1 mb-md-0">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4 pb-1 ">
+               <p class="why_p">At PEC, we blend unmatched experience with relentless innovation, constantly evolving to meet the ever-changing demands of our industry. We design and deliver resistors built for the most challenging applications, driven by a commitment to excellence and a dedication to creating a more sustainable world.</p>
+         </div>
+         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-4 pb-1 mb-md-0">
             <div class="col-md-12 p-3 cardicon">
                <div class="service-promotion__icon mb-4">
-                  <img src="<?=base_url();?>assets/images/icon3.png" class="hicon">
+                  <img src="<?=base_url();?>assets/images/icon4.png" class="hicon whyicon" alt="PEC- Global Quality Certifications">
                </div>
-               <h3 class="service-promotion__title h5 primaryblue">On Time Delivery</h3>
+               <h3 class="service-promotion__title h5 primaryblue why_title">Global Quality Certifications</h3>
                <p class="service-promotion__content text-secondary">Worldwide</p>
             </div>
          </div>
          <!-- /.col-md-4-->
-         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-4 pb-1 mb-md-0">
+         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-4 pb-1 mb-md-0">
             <div class="col-md-12 p-3 cardicon">
                <div class="service-promotion__icon mb-4">
-                  <img src="<?=base_url();?>assets/images/icon1.png" class="hicon">
+                  <img src="<?=base_url();?>assets/images/icon1.png" class="hicon whyicon" alt="PEC- Design to Delivery">
                </div>
-               <h3 class="service-promotion__title h5 primaryblue">Design to Delivery</h3>
+               <h3 class="service-promotion__title h5 primaryblue why_title">Design to Delivery</h3>
                <p class="service-promotion__content text-secondary">Under One Roof</p>
             </div>
          </div>
          <!-- /.col-md-4-->
-         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-4 pb-1 mb-md-0">
+         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-4 pb-1 mb-md-0">
             <div class="col-md-12 p-3 cardicon">
                <div class="service-promotion__icon mb-4">
-                  <img src="<?=base_url();?>assets/images/icon2.png" class="hicon">
+                  <img src="<?=base_url();?>assets/images/icon2.png" class="hicon whyicon" alt="PEC- Premium Grade Components">
                </div>
-               <h3 class="service-promotion__title h5 primaryblue">Premium Grade Components</h3>
+               <h3 class="service-promotion__title h5 primaryblue why_title">Premium Grade Components</h3>
                <p class="service-promotion__content text-secondary">Committed to Quality</p>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-4 pb-1 mb-md-0">
+            <div class="col-md-12 p-3 cardicon">
+               <div class="service-promotion__icon mb-4">
+                  <img src="<?=base_url();?>assets/images/why_icon6.png" class="hicon whyicon" alt="PEC- Long Term Partnerships">
+               </div>
+               <h3 class="service-promotion__title h5 primaryblue why_title">Long Term Partnerships</h3>
+               <p class="service-promotion__content text-secondary">Value based Relationships</p>
             </div>
          </div>
          <!-- /.col-md-4 text-center-->
@@ -395,35 +435,44 @@
       <!-- /.row -->
    </section>
    <!-- /.service-promotion container -->
-   <section class="blog-carousel container mb-md-4 pb-md-4 mb-xl-5">
-      <div class="d-flex align-items-center justify-content-between flex-wrap mb-3 pb-xl-2 mb-xl-4">
-         <h3 class="section-title text-capitalize">Upcoming <b class="titlehighlight">Events & Newsletters </b></h3>
+   
+   <section class="blog-carousel container mb-md-4 pb-md-4 mb-xl-5 ">
+      <div class="d-flex align-items-center justify-content-between flex-wrap mb-3 pb-xl-2 mb-xl-4" style="display: block!important;">
+         <h3 class="section-title text-capitalize"> Events <b class="titlehighlight"> & Newsletters </b></h3>
       </div>
-      <div class="position-relative">
+      <div class="position-relative eventinnercontainer">
          <div class="swiper-container js-swiper-slider"
             data-settings='{
             "autoplay": {
             "delay": 5000
             },
-            "slidesPerView": 3,
-            "slidesPerGroup": 3,
-            "effect": "none",
-            "loop": true,
-            "breakpoints": {
-            "320": {
-            "slidesPerView": 1,
-            "slidesPerGroup": 1,
-            "spaceBetween": 14
-            },
-            "768": {
             "slidesPerView": 2,
             "slidesPerGroup": 2,
-            "spaceBetween": 24
+            "effect": "none",
+            "loop": true,
+            "navigation": {
+                 "nextEl": ".swiper-button-next",
+                 "prevEl": ".swiper-button-prev"
+            },
+            "pagination": {
+                 "el": ".swiper-pagination",
+                 "clickable": true
+              },
+            "breakpoints": {
+            "320": {
+                "slidesPerView": 1,
+                "slidesPerGroup": 1,
+                "spaceBetween": 14
+            },
+            "768": {
+                "slidesPerView": 1,
+                "slidesPerGroup": 1,
+                "spaceBetween": 24
             },
             "992": {
-            "slidesPerView": 1,
-            "slidesPerGroup": 1,
-            "spaceBetween": 30
+                "slidesPerView": 2,
+                "slidesPerGroup": 2,
+                "spaceBetween": 30
             }
             }
             }'>
@@ -432,36 +481,43 @@
                 if(!empty($events)){
                   foreach ($events as $ekey => $e_val) 
                   { ?>
-                      <div class="swiper-slide blog-grid__item mb-4 eventblock1">
+                      <div class="swiper-slide swiper-slide_event blog-grid__item mb-4 ">
                         <div class="blog-grid__item-image eventimgdiv1">
-                           <img loading="lazy" class="" src="<?=base_url();?>uploads/events/<?=$e_val['event_image'];?>" style="height: 100%; width: 100%" alt="">
+                           <img loading="lazy" class="" src="<?=base_url();?>uploads/events/<?=$e_val['event_image'];?>" style="height: 100%; width: 100%" alt="<?=(!empty($e_val['event_image_alt'])) ? $e_val['event_image_alt'] : ''; ?>">
                         </div>
-                        <div class="blog-grid__item-detail eventimgdiv2">
+                        <div class="blog-grid__item-detail eventimgdiv2 eventScrolldiv">
                            <div class="">
-                              <h3><?=(!empty($e_val['title'])) ? ucfirst($e_val['title']) : ''; ?></h3>
+                              <h5><?=(!empty($e_val['title'])) ? ucfirst($e_val['title']) : ''; ?></h5>
                            </div>
-                           <div class="mb-0">
+                           <div class="mb-0 eventtextfs">
                               <?=(!empty($e_val['description'])) ? $e_val['description'] : ''; ?>
                            </div>
                         </div>
                       </div>
                 <?php } } ?>
             </div>
+            <!-- Add Arrows -->
+             <!-- <div class="swiper-button-next event-next"></div>
+             <div class="swiper-button-prev event-prev"></div> -->
+             <!-- Add Pagination -->
+             <br>
+             <div class="swiper-pagination"></div>
          </div>
+         
       </div>
    </section>
    <section class="collections-grid mb-md-4 pb-md-4 mb-xl-5 mbbottom">
       <div class="container">
          <div class="row">
             <div class="col-lg-7">
-               <img src="<?=base_url();?>assets/images/worldmap.png" class="mb-4">
+               <img src="<?=base_url();?>assets/images/worldmap.png" class="mb-4" alt="World Map">
             </div>
             <div class="col-lg-5 pr-5">
                <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Our Global <strong class="titlehighlight">Footprint</strong></h3>
-               <p>
+               <p class="fs-16">
                   PEC has designed, manufactured, and delivered resistors to global customers for 50 years. We have a comprehensive range of power resistors for use in Industrial, Automotive, Traction, Power Systems, Medical Equipment, Renewable Energy, Electric Vehicles, Aviation and Military applications. 
                </p>
-               <a href="<?=base_url();?>contact"><button class="btn btn-outline-primary border-0 fs-base text-capitalize mt-4  btn-45">
+               <a href="<?=base_url();?>contact-us"><button class="btn btn-outline-primary border-0 fs-base text-capitalize mt-4  btn-45">
                Get in touch
                </button></a>
             </div>
@@ -513,7 +569,7 @@
                <?php if(!empty($clients)){ 
                   foreach ($clients as $clientkey => $client) { ?>
                      <div class="swiper-slide">
-                        <img loading="lazy" src="<?=base_url();?>uploads/client/<?=$client['image']?>" class="imgclientslider" alt="Logos used for Representation only. Logos belong to respective companies only.">
+                        <img loading="lazy" src="<?=base_url();?>uploads/client/<?=$client['image']?>" class="imgclientslider" alt="<?=(!empty($client['image_alt'])) ? $client['image_alt'] : ''; ?>">
                      </div>
                      <?php
                   }

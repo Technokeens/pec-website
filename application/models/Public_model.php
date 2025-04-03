@@ -193,9 +193,17 @@ class Public_model extends CI_Model
         {
             // if ($post['search']['value']!=""){
                 $searchValue = $big_get['search'];
-                $searchQuery ="(tbl_product.product_name LIKE '%".$searchValue."%' OR tbl_construction.construction_title LIKE '%".$searchValue."%' OR tbl_product_series.title LIKE '%".$searchValue."%')";
+                $searchQuery ="(tbl_product.product_name LIKE '%".$searchValue."%' OR tbl_construction.construction_title LIKE '%".$searchValue."%' OR tbl_product_series.title LIKE '%".$searchValue."%' OR tbl_product.cross_reference LIKE '%".$searchValue."%')";
                 $this->db->where($searchQuery);
             // }
+        }
+
+        //cross reference search
+        if (!empty($big_get) && !empty($big_get['search_cr'])) 
+        {
+            $searchValue = $big_get['search_cr'];
+            $searchQuery ="(tbl_product.cross_reference LIKE '%".$searchValue."%')";
+            $this->db->where($searchQuery);
         }
 
     }
@@ -269,6 +277,7 @@ class Public_model extends CI_Model
             tbl_product.min_resistance,
             tbl_product.max_resistance,
             tbl_product.dimension_height,
+            tbl_product.dimension_width,
             tbl_power_rating.power_rating as product_power_rating,
             tbl_product.power_rating as power_ids,
             tbl_construction.construction_title,
@@ -309,6 +318,7 @@ class Public_model extends CI_Model
             tbl_product.min_resistance,
             tbl_product.max_resistance,
             tbl_product.dimension_height,
+            tbl_product.dimension_width,
             tbl_power_rating.power_rating as product_power_rating,
             tbl_product.power_rating as power_ids,
             tbl_construction.construction_title,
@@ -343,6 +353,7 @@ class Public_model extends CI_Model
             tbl_product_series.title,
             tbl_product_series.file_folder,
             tbl_product_series.series_image,
+            tbl_product_series.short_description,
             tbl_product_series.slug as series_slug,
             tbl_product.*,
             tbl_power_rating.power_rating as product_power_rating,

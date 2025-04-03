@@ -100,6 +100,10 @@
                            </div>
                         </div> -->
                      
+                        <input type="hidden" name="seo_title" id="seo_title" class="form-control" value="">
+                        <input type="hidden" name="seo_keywords" id="seo_keywords" class="form-control" value="">
+                        <input type="hidden" name="seo_description" id="seo_description" class="form-control" value="">
+
                         
 
                         <div class="form-group">

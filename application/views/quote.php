@@ -1,3 +1,10 @@
+<style>
+  .shopping-cart__totals > h1, .shopping-cart__totals > .h1 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+  }
+</style>
 <div class="mb-5 pb-xl-5"></div>
   <main>
     <div class="mb-3 pb-3 mb-md-4 pb-md-2 mb-xl-5 pb-xl-5 hidden-xs"></div>
@@ -13,10 +20,12 @@
 		          <table class="cart-table">
 		            <thead>
 		              <tr>
-		                <th></th>
-		                <th>Product Name</th>
-		                <th>Quantity</th>
-		                <th></th>
+		                <th style="width: 20%;"></th>
+		                <th style="width: 25%;">Product Name</th>
+                        <th style="width: 20%;">Resistance Value</th>
+                        <th style="width: 20%;">Tolerance Value</th>
+		                <th style="width: 10%;">Quantity</th>
+		                <th style="width: 5%;"></th>
 		              </tr>
 		            </thead>
 		            <tbody>
@@ -47,6 +56,16 @@
     					                    <p class="mb-0"><a href="<?=base_url();?>product/<?=$seri['slug']?>/<?=$prod['slug']?>"><?=(!empty($cart['series_name'])) ? $cart['series_name'] : ''; ?>(<?=(!empty($cart['product_name'])) ? $cart['product_name'] : ''; ?>)</a></p>
     					                  </div>
     					                </td>
+                                        <td>
+                                          <div class="shopping-cart__product-item__detail mr-1">
+                                            <textarea name="resistance_value[]" class="qtyinput" style="width: 100%;" ></textarea>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="shopping-cart__product-item__detail mr-1">
+                                            <textarea name="tolerance_value[]" class="qtyinput" style="width: 100%;" ></textarea>
+                                          </div>
+                                        </td>
     					                <td>
     					                	<input type="hidden" name="product_id[]" value="<?=(!empty($cart['product_id'])) ? $cart['product_id'] : ''; ?>">
     					                	<input type="hidden" name="product_name[]" value="<?=(!empty($cart['product_name'])) ? $cart['product_name'] : ''; ?>">
@@ -54,7 +73,7 @@
     						                <input type="hidden" name="series_name[]" value="<?=(!empty($cart['series_name'])) ? $cart['series_name'] : ''; ?>">
     						                <input type="hidden" name="application_id[]" value="<?=(!empty($cart['application_id'])) ? $cart['application_id'] : ''; ?>">
 
-    					                	<input type="number" name="qty[]" class="qtyinput" value="1" min="1" required>
+    					                	<input type="number" name="qty[]" class="qtyinput" value="1" min="1" style="width: 100%;" required>
     					                </td>
     					                
     					                <td>
@@ -77,19 +96,21 @@
 		        <div class="shopping-cart__totals-wrapper">
 		          <div class="sticky-content">
 		            <div class="shopping-cart__totals">
-		              <h3>Request A Quote</h3>
+		              <h1>Request A Quote</h1>
 		              <p>Got a project in mind? We're all ears! Fill out the form and tell us all about your project.</p>
 		                  <div id="checkquoteerr"></div>
                           <div class="form-floating my-4">
                             <label for="name">Name *</label>
                             <input type="text" class="form-control" name="name" id="name" placeholder="John" required>
-                            
                           </div>
                           <div class="form-floating my-4">
                             <label for="email">Email *</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="Email@example.com" required>
                           </div>
-                          
+                          <div class="form-floating my-4">
+                            <label for="phone">Mobile Number *</label>
+                            <input type="number" class="form-control" name="phone" id="phone" placeholder="98********" required>
+                          </div>
                           <div class="form-floating my-4">
                             <label>Shipping Address</label>
                             <textarea class="form-control form-control_gray" name="address" id="address" placeholder="Full Address" cols="30" rows="5" required></textarea>
@@ -188,6 +209,7 @@
     var email     = $('#email').val();
     var message   = $('#message').val();
     var address   = $('#address').val();
+    var phone     = $('#phone').val();
     var checkquotelist = "<?=(!empty($_SESSION['quotecart']['product'])) ? count($_SESSION['quotecart']['product']) : ''; ?>"
     var name_regex = /^[a-zA-Z ]+$/;
     var flag    = 0;
@@ -227,6 +249,21 @@
           remove_error('email');
         }
     }
+
+    if (phone == "" || !phone.trim())
+    {
+        show_error("phone","Please enter mobile number.");
+        flag = 1;
+    } 
+    else if(!/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(phone))
+    {
+        show_error("phone","Please enter correct mobile number.");
+        flag = 1;
+    } 
+    else
+    {     
+        remove_error("phone");
+    } 
 
     if(message=="")
     {

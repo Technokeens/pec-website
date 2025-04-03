@@ -62,6 +62,14 @@
                         <!-- <p style="color: green;">Note : Choose 500 X 500px or 600 X 600px diamension size  for client </p> -->
                      </div>
                   </div>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">Alternative Text</label>
+                     <div class="col-sm-10">
+                        <input name="image_alt" id="image_alt" type="text" style="margin:0 0 0 0px;" class="meta_keyword form-control">
+                        <p style="color: green;">Note :  Add Alternative Text for Image. </p>
+                     </div>
+
+                  </div>
                
                   <div class="hr-line-dashed"></div>
                   <div class="form-group">

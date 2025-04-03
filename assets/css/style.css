@@ -7438,7 +7438,7 @@ h6,
 
 .fs-base,
 .form-title {
-  font-size: 0.875rem !important; }
+  font-size: 14px !important; }
 
 .font-sofia {
   font-family: 'SofiaProBold'; }
@@ -9143,7 +9143,7 @@ img {
   border: 1px solid #eeeeee;
   color: #222222;
   background-color: #ffffff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.375;
   outline: none; }
@@ -10310,7 +10310,7 @@ img {
   display: block;
   width: 100%;
   padding: 0.9375rem 0.9375rem 0.75rem;
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
   color: #222222;
@@ -10402,7 +10402,7 @@ img {
 .form-control-sm {
   min-height: calc(1.5em + 0.5rem + 2px);
   padding: 0.75rem 1.125rem 0.6rem;
-  font-size: 0.875rem;
+  font-size: 16px;
   border-radius: 0; }
   .form-control-sm::file-selector-button {
     padding: 0.75rem 1.125rem 0.6rem;
@@ -11190,7 +11190,7 @@ textarea.form-control-lg {
 .pc__title {
   margin: 0;
   color: rgba(66, 66, 66, 1);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400; 
 }
 
@@ -13850,7 +13850,7 @@ textarea.form-control-lg {
   .blog-pagination.type2 .swiper-pagination-bullet-active, .testimonial-pagination.type2 .swiper-pagination-bullet-active, .products-pagination.type2 .swiper-pagination-bullet-active, .slideshow-pagination.type2 .swiper-pagination-bullet-active {
     border-color: transparent; }
     .blog-pagination.type2 .swiper-pagination-bullet-active::after, .testimonial-pagination.type2 .swiper-pagination-bullet-active::after, .products-pagination.type2 .swiper-pagination-bullet-active::after, .slideshow-pagination.type2 .swiper-pagination-bullet-active::after {
-      color: #222222;
+      color: #ffffff;
       width: 0.625rem;
       height: 0.625rem;
       margin-top: -0.3125rem;
@@ -15337,7 +15337,9 @@ button.js-add-wishlist.active .flaticon.flaticon-heart, a.add-to-wishlist.active
 .shopping-cart {
   display: flex;
   flex-direction: column;
-  gap: 3.625rem; }
+/*  gap: 3.625rem; */
+    gap: 0.625rem;
+}
   @media (min-width: 1200px) {
     .shopping-cart {
       flex-direction: row; } }
@@ -15439,7 +15441,7 @@ button.js-add-wishlist.active .flaticon.flaticon-heart, a.add-to-wishlist.active
         .shopping-cart .cart-table tbody tr td > * {
           transition: all 0.32s cubic-bezier(0.39, 0.575, 0.565, 1);
           overflow: hidden;
-          font-size: 12px;
+          font-size: 14px;
           max-height: 12rem; }
       .shopping-cart .cart-table tbody tr._removed td {
         padding-top: 0;

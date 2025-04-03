@@ -3,7 +3,7 @@
     <div class="mb-5 pb-4 hidden-xs"></div>
     <section class="container mbbottom">
       <!-- <h2 class="section-title text-uppercase fw-bold mb-5">Terms & Conditions</h2> -->
-      <h3 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Terms of <strong class="titlehighlight">Services</strong></h3>
+      <h1 class="section-title text-capitalize text-left mb-1 mb-md-2 pb-xl-2 mb-xl-4">Terms of <strong class="titlehighlight">Services</strong></h1>
       <h6 class="mb-3">Acceptance of Terms</h6>
       <p class="mb-4">By accessing or using the services, products, and website of Precision Electronic Component, you agree to comply with and be bound by these Terms of Service. If you do not agree to these Terms, please do not use our services.</p>
       <h6 class="mb-3">Use of Services</h6>
