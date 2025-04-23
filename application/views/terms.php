@@ -1,3 +1,14 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Terms of Service",
+  "url": "https://peccomponents.com/terms",
+  "description": "Understand our terms of service, warranties, and usage rules. Using our site means you agree to these terms. Got questions? Reach out.",
+  "about": "Terms of Service"
+}
+</script>
+
 <div class="mb-5 pb-4"></div>
 <main class="mbtopmain">
     <div class="mb-5 pb-4 hidden-xs"></div>

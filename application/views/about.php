@@ -1,3 +1,13 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Us",
+  "url": "https://peccomponents.com/about-us",
+  "description": "Since 1972, PEC has been crafting innovative, certified resistors with unmatched quality and reliability for industries worldwide."
+}
+</script>
+
 <style>
   .slideshow-bg {
     position: relative;
@@ -208,8 +218,8 @@
             "type": "bullets",
             "clickable": true
           }, -->
-          <div id="product_carousel" class="position-relative team_slider_div">
-            <div class="swiper-container js-swiper-slider"
+          <!-- <div id="product_carousel" class="position-relative team_slider_div"> -->
+            <!-- <div class="swiper-container js-swiper-slider"
               data-settings='{
                 "autoplay": {
                   "delay": 5000
@@ -271,7 +281,7 @@
                   </div>
                 </div>
 
-                <!-- <div class="swiper-slide product-card">
+                <div class="swiper-slide product-card">
                   <div class="pc__img-wrapper team_img-wrapper">
                     <a href="javascript:;">
                       <img loading="lazy" src="<?=base_url();?>assets/images/team_img.png" width="100%" height="100%"  alt="Cropped Faux leather Jacket" class="pc__img">
@@ -295,9 +305,9 @@
                     <h5>Full Name</h5>
                     <h6 class="pc__title"><a href="#">Designation</a></h6>
                   </div>
-                </div> -->
-              </div><!-- /.swiper-wrapper -->
-            </div><!-- /.swiper-container js-swiper-slider -->
+                </div>
+              </div>
+            </div> -->
 
             <!-- <div class="products-carousel__prev position-absolute top-50 d-flex align-items-center justify-content-center">
               <svg width="25" height="25" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg"><use href="#icon_prev_md" /></svg>
@@ -305,9 +315,9 @@
             <!-- <div class="products-carousel__next position-absolute top-50 d-flex align-items-center justify-content-center">
               <svg width="25" height="25" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg"><use href="#icon_next_md" /></svg>
             </div> --><!-- /.products-carousel__next -->
-            <div class="products-pagination mt-4 mb-5 d-flex align-items-center justify-content-center"></div>
+            <!-- <div class="products-pagination mt-4 mb-5 d-flex align-items-center justify-content-center"></div> -->
             <!-- /.products-pagination -->
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </section>

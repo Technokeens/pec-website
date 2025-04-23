@@ -1,3 +1,21 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PEC Components-Power & Precision Resistors for Every Industry ",
+  "url": "https://peccomponents.com/",
+  "logo": "https://peccomponents.com/uploads/peclogo.png",
+  "description": "PEC is a global leader in design & manufacture of Power Resistors for 50+ years with a deep Commitment to Quality and Sustainability since 1972.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91 40-27126228 ",
+    "contactType": "Customer Service",
+    "areaServed": "IN",
+    "availableLanguage": ["English", "Hindi"]
+  }
+}
+</script>
+
 <style>
    .disclaimer {
      font-size: 12px;
@@ -62,7 +80,7 @@
                        </div>
                        <div class="slideshow-text container position-absolute start-50 top-50 translate-middle ">
                            <div class="">
-                               <h1 class="text-capitalize text-white fw-bold mb-0 animate animate_fade animate_btt animate_delay-4 fs-38 textmb mb-3">
+                               <h1 class="text-capitalize text-white fw-bold mb-0 animate animate_fade animate_btt animate_delay-4 fs-38 textmb mb-3" style="font-weight: 800 !important;font-size: 40px;">
                                    <?=(!empty($slider['title'])) ? ucfirst($slider['title']) : ''; ?>
                                </h1>
                                <div class="sliderfs mb-1 pb-1 text-white animate animate_fade animate_btt animate_delay-5 hidden-xs">

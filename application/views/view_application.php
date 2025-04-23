@@ -1,3 +1,21 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Application",
+  "name": "<?=(!empty($application['title'])) ? ucfirst($application['title']) : ''; ?>",
+  "description": "<?=(!empty($application['description'])) ? $application['description'] : ''; ?>",
+  "sku": "",
+  "brand": {
+    "@type": "Brand",
+    "name": "ABC Resistors"
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "PEC Components-Power & Precision Resistors for Every Industry"
+  }
+}
+</script>
+
 <style>
 .banner_data h1 {
     font-size: 30px;

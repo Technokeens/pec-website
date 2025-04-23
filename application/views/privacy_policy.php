@@ -1,3 +1,14 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "url": "https://peccomponents.com/privacy-policy",
+  "description": "We collect info like your name, email, and usage data to improve services. Your data stays secure. Want details? Check out our privacy policy.",
+  "about": "Privacy Policy"
+}
+</script>
+
 <div class="mb-5 pb-4"></div>
 <main class="mbtopmain">
     <div class="mb-5 pb-4 hidden-xs"></div>

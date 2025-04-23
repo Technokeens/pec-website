@@ -1,3 +1,13 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Request a Quote",
+  "url": "https://peccomponents.com/request-quote",
+  "description": "Have a project in mind? Share your details to get a customized quote for top-quality power resistors. We're here to help"
+}
+</script>
+
 <style>
   .shopping-cart__totals > h1, .shopping-cart__totals > .h1 {
       font-size: 1rem;

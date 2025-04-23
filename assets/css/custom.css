@@ -238,7 +238,7 @@ li.navigation__item.active a{
     padding-left: 0.5rem;
 }
 .eventScrolldiv {
-    max-height: 165px; /* Set the maximum height for the scrollable area */
+    max-height: 175px; /* Set the maximum height for the scrollable area */
     overflow-y: auto;  /* Add a vertical scrollbar when the content overflows */
     padding-right: 15px; /* Optional: Add padding to the right to avoid content being hidden behind the scrollbar */
     box-sizing: border-box; /* Ensure padding is included in the width/height */

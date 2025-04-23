@@ -1,3 +1,21 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "<?=(!empty($series_data['title'])) ? ucfirst($series_data['title']) : ''; ?>",
+  "description": "<?=(!empty($series_data['description'])) ? $series_data['description'] : ''; ?>",
+  "sku": "",
+  "brand": {
+    "@type": "Brand",
+    "name": "ABC Resistors"
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "PEC Components-Power & Precision Resistors for Every Industry"
+  }
+}
+</script>
+
 <style>
   .newsletter-popup {
       width: 45.25rem;

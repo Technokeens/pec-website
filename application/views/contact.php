@@ -1,3 +1,13 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Us",
+  "url": "https://peccomponents.com/contact-us",
+  "description": "Get in touch with PEC for precise and reliable power resistors manufacturer. Call or email us today to discuss your needs and explore our solutions"
+}
+</script>
+
 <style>
   .slideshow-bg {
     position: relative;
