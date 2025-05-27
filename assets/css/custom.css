@@ -248,6 +248,11 @@ li.navigation__item.active a{
     top: 40%;
 }
 
+.slidertitl{
+    font-weight: 800;
+    font-size: 40px;
+}
+
 :root {
     --swiper-navigation-size: 28px;
 }

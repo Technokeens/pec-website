@@ -80,7 +80,7 @@
                        </div>
                        <div class="slideshow-text container position-absolute start-50 top-50 translate-middle ">
                            <div class="">
-                               <h1 class="text-capitalize text-white fw-bold mb-0 animate animate_fade animate_btt animate_delay-4 fs-38 textmb mb-3" style="font-weight: 800 !important;font-size: 40px;">
+                               <h1 class="text-capitalize text-white fw-bold mb-0 animate animate_fade animate_btt animate_delay-4 fs-38 textmb mb-3 slidertitl">
                                    <?=(!empty($slider['title'])) ? ucfirst($slider['title']) : ''; ?>
                                </h1>
                                <div class="sliderfs mb-1 pb-1 text-white animate animate_fade animate_btt animate_delay-5 hidden-xs">
